@@ -1,0 +1,34 @@
+Main
+    SPOT = 1
+    PROGRAMA = 2
+
+    RUTA_SPOT = "/audios/spots/"
+    RUTA_PROGRAMA = "/audios/programas/"
+
+    RUTA_SPOT_PROCESADOS = "/baseconocimiento/spots/"
+    RUTA_PROGRAMA_PROCESADOS = "/baseconocimiento/programas/"
+
+    inicializar
+        LeerSpotProcesados()
+    AprenderSpot()
+        LeerDirectorio(Ruta)
+        ProcesarArchivo(Tipo)
+        GrabarArchivoProcesado()
+    ProcesarPrograma()
+        ProcesarArchivo(Tipo)
+        Reconocer()
+
+Modules
+    LeerDirectorio()
+        Toma los archivos en TODO
+    ProcesarArchivo(Tipo)
+        Obtiene fingerprint, hashname,  inicia el procesamiento INPROGRES
+    GrabarArchivoProcesado
+        Graba las huellas de memoria a archivos fisico
+    LeerSpotProcesados()
+        Lee archivos procesados de memoria y los coloca en memoria
+    Reconocer(huellas)
+        Compara las huellas de los archivos de
+    GenerarXml()
+        En base a las coinicidencias Genera archivo xml
+
