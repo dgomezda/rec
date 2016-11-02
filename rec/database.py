@@ -27,7 +27,7 @@ class Database(object):
             UNIQUE KEY `spotId` (`spotId`)
         ) ENGINE=INNODB;"""
 
-    INSERT_HUELLAS = "INSERT IGNORE INTO Huellas (hash, spotId, offset) values (UNHEX(%s), %s, %s);"
+    INSERT_HUELLAS = "INSERT IGNORE INTO huellas (hash, spotId, offset) values (UNHEX(%s), %s, %s);"
     INSERT_SPOTS = "INSERT INTO spots (nombre, sha1, duracion) values (%s, UNHEX(%s), %s);"
     DELETE_HUELLAS_NOPROCESADAS = "DELETE FROM spots WHERE procesado = 0;"
     UPDATE_SPOT_PROCESADO = "UPDATE spots SET procesado = 1 WHERE spotId = %s;"
