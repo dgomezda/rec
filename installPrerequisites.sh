@@ -25,3 +25,11 @@ sudo apt-get install python-dev
 sudo apt-get install python-MySQLdb
 sudo apt-get install libmysqlclient-dev
 sudo pip install MySQL-python
+#libraries
+sudo pip install dicttoxml
+
+#create database
+#SHOW GLOBAL VARIABLES LIKE 'PORT';
+#mysql --user root -password
+#toor
+#create database ironrec
