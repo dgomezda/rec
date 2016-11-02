@@ -1,0 +1,5 @@
+# descargando fuentes de github
+cd /home/ironuser
+git clone https://github.com/dgomezda/rec
+#asigando permisos de propietario a usuario
+sudo chown ironuser: /home/ironuser/
