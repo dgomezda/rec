@@ -5,6 +5,6 @@ rec = Rec()
 #rec.aprenderSpot('audios/spots/spotariel.mp3',None)
 #rec.ProcesarDirectorio()
 t = time.time()
-print rec.reconocerArchivo('audios/programas/programa03.mp3')
+print rec.reconocerArchivo('audios/programas/programa02.mp3')
 t = time.time() - t
 print("totalTime : %s", t)
