@@ -2,6 +2,7 @@ import MySQLdb as mysql
 from itertools import izip_longest
 import Queue
 from MySQLdb.cursors import DictCursor
+import time
 class Database(object):
     def __init__(self, **options):
         self.cursor = cursor_factory(**options)
@@ -70,8 +71,27 @@ class Database(object):
             cur.execute(self.SELECT_SPOTS)
             for row in cur:
                 yield row
-
+    #@profile
     def return_matches(self, hashes):
+        t = time.time()
+        #mapper = {}
+        mapper = dict((x.upper(), y) for x, y in hashes)
+        #for hash, offset in hashes:
+        #    mapper[hash.upper()] = offset
+        values = mapper.keys()
+        with self.cursor() as cur:
+            for split_values in grouper(values, 1000):
+                # Create our IN part of the query
+                query = self.SELECT_MULTIPLE
+                query = query % ', '.join(['UNHEX(%s)'] * len(split_values))
+                cur.execute(query, split_values)
+                for hash, sid, offset in cur:
+                    songOffset = mapper[hash]
+                    yield (sid,  songOffset - offset)
+        t = time.time() - t
+        print("totalTime  return_matches : %s", t)
+
+    def return_matcheslarge(self, hashes):
         mapper = {}
         map1 = tuple(hashes)
         #for hash, offset in hashes:

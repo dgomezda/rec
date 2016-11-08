@@ -40,6 +40,7 @@ class Rec(object):
     DEFAULT_OVERLAP_RATIO = 0.5
     DEFAULT_FAN_VALUE = 15
     DEFAULT_AMP_MIN = 10
+    DEFAULT_HIT_MIN  = 10
     PEAK_NEIGHBORHOOD_SIZE = 20
 
     #generatehash
@@ -50,13 +51,16 @@ class Rec(object):
     MIN_HASH_TIME_DELTA = 0
     MAX_HASH_TIME_DELTA = 200
     FINGERPRINT_REDUCTION = 20
+    FACTOR_OFFSET = 4
+
 
     #BD
     BD_HOST = "127.0.0.1"
     BD_USER = "root"
     BD_PASSWD = "toor"
     BD_ID = "ironrec"
-    BD_PORT = 3306
+    BD_PORT = 3311
+        #3306
 	#3311
 
     def __init__(self):
@@ -96,7 +100,7 @@ class Rec(object):
 
     def LeerArchivo(self, rutaArchivo):
         contenido = AudioSegment.from_file(rutaArchivo)
-        data = np.fromstring(contenido._data, np.int16)
+        data = np.fromstring(contenido._data, np.int64)
         channels = []
         for chn in xrange(contenido.channels):
             channels.append(data[chn::contenido.channels])
@@ -122,6 +126,7 @@ class Rec(object):
                             "%s|%s|%s" % (str(freq1), str(freq2), str(t_delta)))
                         yield (h.hexdigest()[0:self.FINGERPRINT_REDUCTION], t1)
 
+    #@profile
     def get_2D_peaks(self, arr2D,  amp_min):
         struct = generate_binary_structure(2, 1)
         neighborhood = iterate_structure(struct, self.PEAK_NEIGHBORHOOD_SIZE)
@@ -213,7 +218,7 @@ class Rec(object):
         frames, fs, hashArchivo, duracion  = self.LeerArchivo(filename)
         print "reconociendo programa = : %s ..." % (nombre)
         matches = self._recognize(fs, *frames)
-        self.grabarXML(nombre, matches)
+        #self.grabarXML(nombre, matches)
         return matches
 
     def grabarXML(self,nombre, *data):
@@ -246,11 +251,12 @@ class Rec(object):
         for key, value in diff_counter.iteritems():
             dic = value;
             for key1, value1 in dic.iteritems():
-                if value1 > 10:
+                if value1 > self.DEFAULT_HIT_MIN:
                     spot = self.db.obtenerSpot(key1)
                     nseconds = round(float(key) / fs *
                     self.DEFAULT_WINDOW_SIZE *
-                    self.DEFAULT_OVERLAP_RATIO, 5)
+                    self.DEFAULT_OVERLAP_RATIO *
+                    self.FACTOR_OFFSET, 5)
                     spotRec = {
                         'spotId': key1,
                         'nombre': spot.get('nombre', None),

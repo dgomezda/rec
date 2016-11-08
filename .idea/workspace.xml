@@ -2,21 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="21ea233e-67ef-4de7-81f0-5070c0af2702" name="Default" comment="adding pycharm&#10;">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app.config" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/audios/programas/programa02.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/audios/spots/spotariel.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/baseconocimiento/test.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/BoxTime.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/database.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/database_sql.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/decoder.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/fingerprint.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/recognize.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/wavio.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test2.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/audios/spots/spotariel1.mp3" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/audios/spots/spotariel2.mp3" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/audios/spots/spotariel3.mp3" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/audios/spots/spotariel4.mp3" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/audios/spots/spotariel5.mp3" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/audios/spots/spotariel6.mp3" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/audios/spots/spotariel7.mp3" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/audios/spots/spotariel8.mp3" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/audios/spots/spotariel9.mp3" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/baseconocimiento/programa03.xml" afterPath="$PROJECT_DIR$/baseconocimiento/programa03.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rec/__init__.py" afterPath="$PROJECT_DIR$/rec/__init__.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rec/database.py" afterPath="$PROJECT_DIR$/rec/database.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test.py" afterPath="$PROJECT_DIR$/test.py" />
@@ -39,11 +35,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
-      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/rec/__init__.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="770">
-              <caret line="220" column="0" selection-start-line="220" selection-start-column="0" selection-end-line="220" selection-end-column="0" />
+            <state relative-caret-position="131">
+              <caret line="253" column="48" selection-start-line="253" selection-start-column="48" selection-end-line="253" selection-end-column="48" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -54,8 +50,8 @@
       <file leaf-file-name="database.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/rec/database.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="670">
-              <caret line="88" column="54" selection-start-line="88" selection-start-column="54" selection-end-line="88" selection-end-column="54" />
+            <state relative-caret-position="540">
+              <caret line="89" column="52" selection-start-line="89" selection-start-column="52" selection-end-line="89" selection-end-column="52" />
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
               </folding>
@@ -63,14 +59,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="test.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+            <state relative-caret-position="119">
+              <caret line="7" column="55" selection-start-line="7" selection-start-column="55" selection-end-line="7" selection-end-column="55" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="fftpack.py" pinned="false" current-in-tab="false">
+        <entry file="file://C:/Python27/Lib/site-packages/numpy/fft/fftpack.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="248">
+              <caret line="185" column="0" selection-start-line="185" selection-start-column="0" selection-end-line="185" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -94,18 +100,19 @@
         <option value="$PROJECT_DIR$/run.sh" />
         <option value="$PROJECT_DIR$/lib/database_sql.py" />
         <option value="$PROJECT_DIR$/lib/database.py" />
-        <option value="$PROJECT_DIR$/rec/database.py" />
         <option value="$PROJECT_DIR$/test2.py" />
         <option value="$PROJECT_DIR$/baseconocimiento/programa03.xml" />
-        <option value="$PROJECT_DIR$/rec/__init__.py" />
+        <option value="$PROJECT_DIR$/rec/database.py" />
         <option value="$PROJECT_DIR$/test.py" />
+        <option value="$PROJECT_DIR$/rec/__init__.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-10" />
-    <option name="width" value="2574" />
-    <option name="height" value="1530" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1382" />
+    <option name="height" value="744" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -151,33 +158,20 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="ironrec" />
+              <option name="myItemId" value="rec" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="ironrec" />
+              <option name="myItemId" value="rec" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ironrec" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ironrec" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ironrec" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="rec" />
@@ -186,35 +180,20 @@
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="ironrec" />
+              <option name="myItemId" value="rec" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="ironrec" />
+              <option name="myItemId" value="rec" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="baseconocimiento" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ironrec" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ironrec" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="audios" />
+              <option name="myItemId" value="rec" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -435,20 +414,20 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-10" y="0" width="2574" height="1530" extended-state="0" />
-    <editor active="false" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17307693" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1727672" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2585292" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25709778" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2661107" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26498422" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3995451" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39905363" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -480,6 +459,21 @@
           <line>92</line>
           <option name="timeStamp" value="8" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/rec/__init__.py</url>
+          <line>237</line>
+          <option name="timeStamp" value="89" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/rec/__init__.py</url>
+          <line>163</line>
+          <option name="timeStamp" value="91" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/rec/__init__.py</url>
+          <line>255</line>
+          <option name="timeStamp" value="92" />
+        </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
@@ -488,30 +482,46 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="80" />
+      <option name="time" value="93" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
-        <watch expression="offset" />
-        <watch expression="spot[1]" />
-        <watch expression="[item for item in matches if item[1]==2828]" language="Python" />
-        <watch expression="frames" />
-        <watch expression="fs" />
-        <watch expression="hashes" />
-        <watch expression="diff_counter" />
-        <watch expression="diff" />
-        <watch expression="diff_counter" />
-        <watch expression="diff.get()" language="Python" />
-        <watch expression="dir(diff)" language="Python" />
-        <watch expression="diff" />
-        <watch expression="diff" />
-        <watch expression="value" />
-        <watch expression="dic[0]" />
-        <watch expression="dic[1]" />
+        <watch expression="i" />
+        <watch expression="peaks" />
       </configuration>
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/rec/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3689">
+          <caret line="220" column="0" selection-start-line="220" selection-start-column="0" selection-end-line="220" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rec/database.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1445">
+          <caret line="88" column="54" selection-start-line="88" selection-start-column="54" selection-end-line="88" selection-end-column="54" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/rec/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="7194">
@@ -526,7 +536,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -550,22 +559,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test2.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1155">
-          <caret line="38" column="23" selection-start-line="38" selection-start-column="23" selection-end-line="38" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/baseconocimiento/file1.text">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="44" selection-start-line="0" selection-start-column="44" selection-end-line="0" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/test2.py" />
+    <entry file="file://$PROJECT_DIR$/baseconocimiento/file1.text" />
     <entry file="file://C:/Python27/Lib/site-packages/MySQLdb/cursors.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="6105">
@@ -574,30 +569,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/database_sql.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="9900">
-          <caret line="307" column="77" selection-start-line="307" selection-start-column="29" selection-end-line="307" selection-end-column="77" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/database.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2739">
-          <caret line="84" column="22" selection-start-line="84" selection-start-column="8" selection-end-line="84" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4422">
-          <caret line="140" column="55" selection-start-line="140" selection-start-column="55" selection-end-line="140" selection-end-column="55" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/database_sql.py" />
+    <entry file="file://$PROJECT_DIR$/lib/database.py" />
+    <entry file="file://$PROJECT_DIR$/lib/__init__.py" />
     <entry file="file://C:/Python27/Lib/site-packages/pydub/utils.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -701,7 +675,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -713,10 +686,36 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/statsline.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Python27/Lib/site-packages/numpy/fft/fftpack.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="248">
+          <caret line="185" column="0" selection-start-line="185" selection-start-column="0" selection-end-line="185" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="55" selection-start-line="7" selection-start-column="55" selection-end-line="7" selection-end-column="55" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/rec/database.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="670">
-          <caret line="88" column="54" selection-start-line="88" selection-start-column="54" selection-end-line="88" selection-end-column="54" />
+        <state relative-caret-position="540">
+          <caret line="89" column="52" selection-start-line="89" selection-start-column="52" selection-end-line="89" selection-end-column="52" />
           <folding>
             <element signature="e#0#23#0" expanded="true" />
           </folding>
@@ -725,20 +724,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/rec/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="770">
-          <caret line="220" column="0" selection-start-line="220" selection-start-column="0" selection-end-line="220" selection-end-column="0" />
+        <state relative-caret-position="131">
+          <caret line="253" column="48" selection-start-line="253" selection-start-column="48" selection-end-line="253" selection-end-column="48" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
           </folding>
         </state>
       </provider>
