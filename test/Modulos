@@ -1,20 +1,20 @@
 Main
-    SPOT = 1
-    PROGRAMA = 2
+    AVISO = 1
+    HORA = 2
 
-    RUTA_SPOT = "/audios/spots/"
-    RUTA_PROGRAMA = "/audios/programas/"
+    RUTA_AVISO = "/audios/avisos/"
+    RUTA_HORA = "/audios/horas/"
 
-    RUTA_SPOT_PROCESADOS = "/baseconocimiento/spots/"
-    RUTA_PROGRAMA_PROCESADOS = "/baseconocimiento/programas/"
+    RUTA_AVISO_PROCESADOS = "/baseconocimiento/avisos/"
+    RUTA_HORA_PROCESADOS = "/baseconocimiento/horas/"
 
     inicializar
-        LeerSpotProcesados()
-    AprenderSpot()
+        LeerAvisoProcesados()
+    AprenderAviso()
         LeerDirectorio(Ruta)
         ProcesarArchivo(Tipo)
         GrabarArchivoProcesado()
-    ProcesarPrograma()
+    ProcesarHora()
         ProcesarArchivo(Tipo)
         Reconocer()
 
@@ -25,7 +25,7 @@ Modules
         Obtiene fingerprint, hashname,  inicia el procesamiento INPROGRES
     GrabarArchivoProcesado
         Graba las huellas de memoria a archivos fisico
-    LeerSpotProcesados()
+    LeerAvisoProcesados()
         Lee archivos procesados de memoria y los coloca en memoria
     Reconocer(huellas)
         Compara las huellas de los archivos de

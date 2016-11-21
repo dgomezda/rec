@@ -28,8 +28,19 @@ sudo pip install MySQL-python
 #libraries
 sudo pip install dicttoxml
 
+sudo pip install flask
+sudo pip install flask_restful
+
 #create database
 #SHOW GLOBAL VARIABLES LIKE 'PORT';
 #mysql --user root -password
 #toor
 #create database ironrec
+
+
+
+# descargando fuentes de github
+#cd /home/ironuser
+#git clone https://github.com/dgomezda/rec
+#asigando permisos de propietario a usuario
+#sudo chown ironuser: /home/ironuser/

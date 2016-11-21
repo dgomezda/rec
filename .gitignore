@@ -87,3 +87,5 @@ ENV/
 
 # Rope project settings
 .ropeproject
+/rec/reconocimiento.pyc
+/rec/*.pyc
