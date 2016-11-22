@@ -38,7 +38,7 @@ class Rec(object):
 
     def __init__(self):
         self.db = Database(user=self.BD_USER, passwd=self.BD_PASSWD, host = self.BD_HOST, db = self.BD_ID, port = self.BD_PORT  )
-        print "Inicializando..."
+        #print "Inicializando..."
 
     def ResetBD(self):
         self.db.limpiar()
@@ -106,15 +106,16 @@ class Rec(object):
         else:
             nprocesses = 1 if nprocesses <= 0 else nprocesses
 
-        pool = multiprocessing.Pool(nprocesses)
         #print reconocerArchivo(rutaAvisos[0])
+        pool = multiprocessing.Pool(nprocesses)
+
         iterator = pool.imap_unordered(reconocerArchivo,
                                       rutaAvisos)
-        #iterator.next()
+        #print iterator.next()
 
         while True:
             try:
-                iterator.next()
+                print iterator.next()
             except multiprocessing.TimeoutError:
                 continue
             except StopIteration:
@@ -122,23 +123,19 @@ class Rec(object):
             except:
                 print("Failed fingerprinting")
             else:
-                print("Exitos")
+                pass
+                #print("Completo.")
+
         pool.close()
         pool.join()
 
 
 
-def reconocerArchivo(filename, horaId):
+def reconocerArchivo(filename):
     rec = Rec()
     nombre = ExtraerNombreArchivo(filename)
-
     frames, fs, hashArchivo, duracion = rec.LeerArchivo(filename)
     print "reconociendo hora = : %s ..." % (nombre)
     matches = _recognize(rec.db, fs , *frames)
-    #print matches
-    #resultado = '{resultado}'
-    #rec.db.marcar_hora_procesado(horaId, resultado)
-    #grabarXML(rec.DIR_AVISO_PROCESADOS, nombre, matches)
     return matches
-
 

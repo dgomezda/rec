@@ -1,2 +1,2 @@
 # IronRec
-IronReco is an script to audio recognition using FFT.
+IronRec Project is an script for audio recognition using FFT.

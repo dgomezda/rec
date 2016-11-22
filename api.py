@@ -52,10 +52,11 @@ def api_horas_procesar():
         horaId = parametros.get('horaId')
         hora = rec.db.obtenerHora_horaId(horaId)
         rutaArchivo = os.path.join(DIR_HORAS, hora['nombre'])
-        result = reconocerArchivo(rutaArchivo, horaId)
-        response = jsonify(result)
+        resultado = reconocerArchivo(rutaArchivo)
+        response = json.dumps(resultado)
+        rec.db.marcar_hora_procesado(horaId, resultado)
     except (RuntimeError):
-        return  getResponse(1001, None)
+        return getResponse(1001, None)
     return getResponse(0, response)
 
 

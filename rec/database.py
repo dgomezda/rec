@@ -47,7 +47,7 @@ class Database(object):
     DELETE_HUELLAS_NOPROCESADAS = "DELETE FROM avisos WHERE procesado = 0;"
 
     UPDATE_AVISO_PROCESADO = "UPDATE avisos SET procesado = 1 WHERE avisoId = %s;"
-    UPDATE_HORA_PROCESADO = "UPDATE horas SET procesado = 1, resultado = %s, fechaprocesado = CURRENT_TIMESTAMP WHERE horaId = %s;"
+    UPDATE_HORA_PROCESADO = "UPDATE horas SET procesado = 1, resultado = %s, fechaprocesado = CURRENT_TIMESTAMP WHERE horaId = %s ;"
 
     SELECT_AVISOS = "SELECT avisoId, nombre, HEX(sha1) as sha1 FROM avisos WHERE procesado = 1;"
     SELECT_MULTIPLE = "SELECT HEX(hash), avisoId, offset FROM huellas WHERE hash IN (%s);"
@@ -102,11 +102,11 @@ class Database(object):
 
     def marcar_hora_procesado(self, horaId, resultado):
         with self.cursor() as cur:
-            cur.execute(self.UPDATE_HORA_PROCESADO, (resultado, horaId,))
+            cur.execute(self.UPDATE_HORA_PROCESADO, ('', horaId,))
 
     def marcar_aviso_procesado(self,  avisoId):
         with self.cursor() as cur:
-            cur.execute(self.UPDATE_HORA_PROCESADO, (avisoId,))
+            cur.execute(self.UPDATE_AVISO_PROCESADO, (avisoId,))
 
     def get_avisos(self):
         with self.cursor(cursor_type=DictCursor) as cur:
@@ -115,7 +115,7 @@ class Database(object):
                 yield row
     #@profile
     def return_matches(self, hashes):
-        t = time.time()
+        #t = time.time()
         #mapper = {}
         mapper = dict((x.upper(), y) for x, y in hashes)
         #for hash, offset in hashes:
@@ -130,8 +130,8 @@ class Database(object):
                 for hash, sid, offset in cur:
                     songOffset = mapper[hash]
                     yield (sid,  songOffset - offset)
-        t = time.time() - t
-        print("totalTime  return_matches : %s", t)
+        #t = time.time() - t
+       # print("totalTime  return_matches : %s", t)
 
     def return_matcheslarge(self, hashes):
         mapper = {}

@@ -3,7 +3,7 @@ import multiprocessing
 from multiprocessing import freeze_support
 
 import time
-rec = Rec()
+#rec = Rec()
 
 #rec.ResetBD()
 #rec.aprenderAviso('audios/avisos/avisoarie0.mp3',None)
@@ -12,7 +12,7 @@ rec = Rec()
 
 
 #t = time.time()
-print reconocerArchivo('audios/horas/hora01.mp3')
+#print reconocerArchivo('audios/horas/hora01.mp3')
 #t = time.time() - t
 #print("totalTime : %s", t)
 
@@ -59,7 +59,7 @@ print reconocerArchivo('audios/horas/hora01.mp3')
 
 #rec = Rec()
 #if __name__ == '__main__':
-#    freeze_support()
+    #freeze_support()
     #datos = {}
     #grabarXML('baseconocimiento/','archivo',datos)
-#    rec.reconocerDirectorio('audios/horas')
+    #rec.reconocerDirectorio('audios/horas')
