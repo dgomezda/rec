@@ -52,9 +52,10 @@ class Database(object):
     SELECT_AVISOS = "SELECT avisoId, nombre, HEX(sha1) as sha1 FROM avisos WHERE procesado = 1;"
     SELECT_MULTIPLE = "SELECT HEX(hash), avisoId, offset FROM huellas WHERE hash IN (%s);"
     SELECT_AVISO = "SELECT nombre, HEX(sha1) as sha1, duracion FROM avisos WHERE avisoId = %s;"
-    SELECT_HORA_NOMBRE = "SELECT horaId FROM horas WHERE nombre = %s;"
+    #SELECT_HORA_NOMBRE = "SELECT horaId FROM horas WHERE nombre = %s;"
+    SELECT_HORA_HORAID = "SELECT horaId, nombre, procesado, resultado, fechacreacion, fechaprocesado FROM horas WHERE horaId = %s;"
     SELECT_HORAS_LIKENOMBRE ="SELECT horaId, nombre, procesado, resultado, fechacreacion, fechaprocesado FROM horas " \
-                  "where nombre like '%{0}%'"
+                  "where INSTR(nombre, %s) > 0"
 
     SELECT_HORAS = "SELECT horaId, nombre, procesado, resultado, fechacreacion, fechaprocesado FROM horas " \
                   "WHERE horaId = %s " \
@@ -63,6 +64,11 @@ class Database(object):
                   "where fechacreacion > %s and fechacreacion < %s " \
                   ""
 
+    SELECT_ULTIMA_HORA = "SELECT horaId FROM horas  order by horaId desc limit 1;"
+
+
+    SELECT_AVISOS_LIKENOMBRE = "SELECT avisoId, nombre, procesado, sha1, duracion FROM avisos " \
+                              "where INSTR(nombre, %s) > 0"
 
     def inicializar(self):
         with self.cursor() as cur:
@@ -149,19 +155,34 @@ class Database(object):
             cur.execute(self.SELECT_AVISO, (avisoId,))
             return cur.fetchone()
 
-    def obtenerHoraId(self, nombre):
+    def obtenerHora_horaId(self, horaId):
         with self.cursor(cursor_type=DictCursor) as cur:
-            cur.execute(self.SELECT_HORA_NOMBRE, (nombre,))
+            cur.execute(self.SELECT_HORA_HORAID, (horaId,))
             return cur.fetchone()
 
-    def obtenerHoras(self, nombre):
-        lista = ()
-        query = self.SELECT_HORAS_LIKENOMBRE.format(nombre)
-        query = self.SELECT_HORAS.join(query)
+
+    def obtenerUltimaHora(self, nombre):
+        with self.cursor(cursor_type=DictCursor) as cur:
+            cur.execute(self.SELECT_ULTIMA_HORA)
+            return cur.fetchone()
+
+    def obtenerHoras(self, nombre, fecha):
+        #TODO: Implementar filtro por fecha
+        lista = []
+        query = self.SELECT_HORAS_LIKENOMBRE
+        #query = self.SELECT_HORAS.join(query)
         with self.cursor(cursor_type=DictCursor) as cur:
             cur.execute(query, (nombre,))
-            for row in cur:
-                lista.add(row)
+            lista = [row for row in cur]
+        return lista
+
+    def obtenerAvisos(self, nombre, fecha):
+        # TODO: Implementar filtro por fecha
+        lista = []
+        query = self.SELECT_AVISOS_LIKENOMBRE
+        with self.cursor(cursor_type=DictCursor) as cur:
+            cur.execute(query, (nombre,))
+            lista = [row for row in cur]
         return lista
 
 def cursor_factory(**factory_options):

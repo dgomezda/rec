@@ -41,11 +41,22 @@ def api_horas():
 def api_horas_cargar():
     errorCode = upload_file(request, DIR_HORAS)
     if (errorCode == 0):
-        rec.db.insert_hora(request.files['file'].filename)
-    #    rutaArchivo = os.path.join(DIR_HORAS, request.files['file'].filename)
-    #    reconocerArchivo(rutaArchivo)
+        horaId = rec.db.insert_hora(request.files['file'].filename)
 
-    return getResponse(errorCode, None)
+    return getResponse(errorCode, horaId)
+
+@app.route('/horas/procesar', methods = ['POST'])
+def api_horas_procesar():
+    parametros = json.loads(request.data)
+    try:
+        horaId = parametros.get('horaId')
+        hora = rec.db.obtenerHora_horaId(horaId)
+        rutaArchivo = os.path.join(DIR_HORAS, hora['nombre'])
+        reconocerArchivo(rutaArchivo, horaId)
+    except (RuntimeError):
+        return  getResponse(1001, None)
+    return getResponse(0, horaId)
+
 
 @app.route('/horas/consultar', methods = ['GET'])
 def api_horas_consultar():
@@ -53,10 +64,10 @@ def api_horas_consultar():
     try:
         nombre = parametros.get('nombre')
         fecha = parametros.get('fecha')
-        print rec.db.obtenerHoras(nombre)
+        result = rec.db.obtenerHoras(nombre, fecha)
     except (RuntimeError):
         return jsonify(getError(1001))
-    return jsonify(parametros)
+    return getResponse(0,result)
 
 @app.route('/horas/obtenerxml', methods = ['GET'])
 def api_horas_obtenerxml():
@@ -84,9 +95,10 @@ def api_avisos_consultar():
     try:
         nombre = parametros.get('nombre')
         fecha = parametros.get('fecha')
+        result = rec.db.obtenerAvisos(nombre,fecha)
     except (RuntimeError):
         return jsonify(getError(1001))
-    return jsonify(parametros)
+    return getResponse(0,result)
 #FIN AVISOS
 
 #INICIO DE LA IMPLEMEMENTACION DEL RECURSO PARAMETROS
@@ -138,7 +150,7 @@ def getError(errorCode):
 
 def getResponse(errorCode=0, obj=None):
     return jsonify({
-        "obj": obj,
+        "result": obj,
         "errorCode": errorCode,
         "errorMessage": getError(errorCode)
     })

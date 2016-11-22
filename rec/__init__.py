@@ -128,10 +128,10 @@ class Rec(object):
 
 
 
-def reconocerArchivo(filename):
+def reconocerArchivo(filename, horaId):
     rec = Rec()
     nombre = ExtraerNombreArchivo(filename)
-    horaId = rec.obtenerHoraId(filename)
+
     frames, fs, hashArchivo, duracion = rec.LeerArchivo(filename)
     print "reconociendo hora = : %s ..." % (nombre)
     matches = _recognize(rec.db, fs , *frames)
