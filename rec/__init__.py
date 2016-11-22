@@ -136,8 +136,8 @@ def reconocerArchivo(filename, horaId):
     print "reconociendo hora = : %s ..." % (nombre)
     matches = _recognize(rec.db, fs , *frames)
     #print matches
-    resultado = '{resultado}'
-    rec.db.marcar_hora_procesado(horaId, resultado)
+    #resultado = '{resultado}'
+    #rec.db.marcar_hora_procesado(horaId, resultado)
     #grabarXML(rec.DIR_AVISO_PROCESADOS, nombre, matches)
     return matches
 
