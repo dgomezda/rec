@@ -136,6 +136,17 @@ def api_parametros_creartablas():
     except (RuntimeError):
         return getResponse(1001)
     return getResponse(0)
+
+@app.route('/apagar', methods=['GET'])
+def shutdown():
+    shutdown_server()
+    return 'Server shutting down...'
+
+def shutdown_server():
+    func = request.environ.get('werkzeug.server.shutdown')
+    if func is None:
+        raise RuntimeError('Not running with the Werkzeug Server')
+    func()
 #FIN CONFIGURACION
 
 #begin common
