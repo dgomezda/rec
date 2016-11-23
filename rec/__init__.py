@@ -26,7 +26,6 @@ class Rec(object):
     DEFAULT_WINDOW_SIZE = 4096
     DEFAULT_OVERLAP_RATIO = 0.5
     DEFAULT_HIT_MIN  = 10
-
     FACTOR_OFFSET = 1
 
     #BD
