@@ -137,5 +137,6 @@ def reconocerArchivo(filename):
     frames, fs, hashArchivo, duracion = rec.LeerArchivo(filename)
     print "reconociendo hora = : %s ..." % (nombre)
     matches = _recognize(rec.db, fs , *frames)
+    grabarXML(rec.DIR_AVISO_PROCESADOS,nombre,matches)
     return matches
 
