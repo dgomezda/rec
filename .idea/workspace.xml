@@ -1,51 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="21ea233e-67ef-4de7-81f0-5070c0af2702" name="Default" comment="adding pycharm&#10;">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/audios/avisos/PR-0000152405.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/audios/avisos/PR-0000172449.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/audios/avisos/PR-0000184259.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/audios/avisos/PR-0000199938.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/audios/avisos/PR-0000199939.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/audios/avisos/PR-0000201725.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/audios/avisos/PR-0000211717.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/audios/avisos/PR-0000215375.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/audios/avisos/PR-0000217244.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/audios/avisos/PR-0000218130.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/audios/avisos/PR-0000218131.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/audios/avisos/PR-0000218324.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/audios/avisos/PR-0000219296.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/audios/avisos/PR-0000219666.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/audios/avisos/PR-0000219958.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/audios/avisos/PR-0000220378.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/audios/avisos/PR-0000220381.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/audios/avisos/PR-0000220384.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/audios/avisos/PR-0000220385.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/audios/avisos/PR-0000220637.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/audios/avisos/PR-0000220737.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/audios/avisos/PR-0000220744.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/audios/avisos/PR-0000220752.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/audios/avisos/PR-0000220753.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/audios/avisos/PR-0000221032.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/audios/avisos/PR-0000221050.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/audios/avisos/PR-0000221051.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/audios/avisos/PR-0000221078.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/audios/avisos/PR-0000221164.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/audios/avisos/PR-0000221234.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/audios/avisos/PR-0000221305.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/audios/avisos/PR-0000221360.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/audios/avisos/PR-0000221380.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/audios/avisos/PR-0000221505.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/audios/avisos/PR-0000221549.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/audios/avisos/PR-0000221582.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/audios/avisos/PR-0000221583.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/audios/avisos/PR-0000221697.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/audios/avisos/PR-0000221698.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/audios/avisos/PR-0000221811.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/audios/avisos/PR-0000221816.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/audios/avisos/PR-0000221917.mp3" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="21ea233e-67ef-4de7-81f0-5070c0af2702" name="Default" comment="adding pycharm&#10;" />
     <ignored path="ironrec.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -77,8 +33,8 @@
       <file leaf-file-name="__init__.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/rec/__init__.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="35" column="18" selection-start-line="35" selection-start-column="16" selection-end-line="35" selection-end-column="18" />
+            <state relative-caret-position="306">
+              <caret line="45" column="33" selection-start-line="45" selection-start-column="33" selection-end-line="45" selection-end-column="33" />
               <folding />
             </state>
           </provider>
@@ -830,8 +786,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/rec/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="35" column="18" selection-start-line="35" selection-start-column="16" selection-end-line="35" selection-end-column="18" />
+        <state relative-caret-position="306">
+          <caret line="45" column="33" selection-start-line="45" selection-start-column="33" selection-end-line="45" selection-end-column="33" />
           <folding />
         </state>
       </provider>
