@@ -1,5 +1,5 @@
 from huellas import obtenerHuellas
-
+import time
 DEFAULT_WINDOW_SIZE = 4096
 DEFAULT_OVERLAP_RATIO = 0.5
 DEFAULT_HIT_MIN = 10
@@ -13,7 +13,10 @@ def _recognize( db, fs , *data):
 
 
 def find_matches(db, samples, fs):
+    t = time.time()
     hashes = obtenerHuellas(samples, fs)
+    t = time.time() - t
+    print("time to obtenerhuellas : %s", t)
     return db.return_matches(hashes)
 
 
