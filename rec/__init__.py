@@ -7,7 +7,7 @@ import warnings
 import multiprocessing
 warnings.filterwarnings("ignore")
 from rec.util import grabarXML
-
+import time
 #leerArchivo
 from pydub import AudioSegment
 import numpy as np
@@ -106,28 +106,28 @@ class Rec(object):
         else:
             nprocesses = 1 if nprocesses <= 0 else nprocesses
 
-        #print reconocerArchivo(rutaAvisos[0])
-        pool = multiprocessing.Pool(nprocesses)
+        print reconocerArchivo(rutaAvisos[0])
+        #pool = multiprocessing.Pool(nprocesses)
 
-        iterator = pool.imap_unordered(reconocerArchivo,
-                                      rutaAvisos)
+        #iterator = pool.imap_unordered(reconocerArchivo,
+        #                              rutaAvisos)
         #print iterator.next()
 
-        while True:
-            try:
-                print iterator.next()
-            except multiprocessing.TimeoutError:
-                continue
-            except StopIteration:
-                break
-            except:
-                print("Failed fingerprinting")
-            else:
-                pass
-                #print("Completo.")
+        #while True:
+        #    try:
+        #        print iterator.next()
+        #    except multiprocessing.TimeoutError:
+        #        continue
+        #    except StopIteration:
+        #        break
+        #    except:
+        #        print("Failed fingerprinting")
+        #    else:
+        #        pass
+        #        #print("Completo.")
 
-        pool.close()
-        pool.join()
+        #pool.close()
+        #pool.join()
 
 
 
@@ -135,8 +135,11 @@ def reconocerArchivo(filename):
     rec = Rec()
     nombre = ExtraerNombreArchivo(filename)
     frames, fs, hashArchivo, duracion = rec.LeerArchivo(filename)
+    t = time.time()
     print "reconociendo hora = : %s ..." % (nombre)
     matches = _recognize(rec.db, fs , *frames)
+    t = time.time() - t
+    print("time to reconize : %s", t)
     grabarXML(rec.DIR_AVISO_PROCESADOS,nombre,matches)
     return matches
 
