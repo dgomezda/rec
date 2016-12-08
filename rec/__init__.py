@@ -8,7 +8,6 @@ import multiprocessing
 warnings.filterwarnings("ignore")
 from rec.util import grabarXML
 import time
-#leerArchivo
 from pydub import AudioSegment
 import numpy as np
 
@@ -85,7 +84,6 @@ class Rec(object):
         return nombre, result, hashArchivo, duracion
 
     def obtenerAvisosAprendidos(self):
-        # get songs previously indexed
         self.avisos = self.db.get_avisos()
         self.avisos_set = set()
         for aviso in self.avisos:
@@ -93,7 +91,6 @@ class Rec(object):
             self.avisos_set.add(hashArchivo)
 
     def reconocerDirectorio(self, ruta):
-        rec = Rec()
         rutaAvisos = []
         for rutaArchivo, ext in LeerDirectorio(ruta):
             rutaAvisos.append(rutaArchivo)
@@ -105,7 +102,7 @@ class Rec(object):
         else:
             nprocesses = 1 if nprocesses <= 0 else nprocesses
 
-        print reconocerArchivo(rutaAvisos[0])
+        print reconocerArchivo(self, rutaAvisos[0])
         #pool = multiprocessing.Pool(nprocesses)
 
         #iterator = pool.imap_unordered(reconocerArchivo,
@@ -130,8 +127,7 @@ class Rec(object):
 
 
 
-def reconocerArchivo(filename):
-    rec = Rec()
+def reconocerArchivo(rec,filename):
     nombre = ExtraerNombreArchivo(filename)
     frames, fs, hashArchivo, duracion = rec.LeerArchivo(filename)
     t = time.time()

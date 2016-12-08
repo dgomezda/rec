@@ -2,55 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="21ea233e-67ef-4de7-81f0-5070c0af2702" name="Default" comment="adding pycharm&#10;">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app.config" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/audios/avisos/PR-0000152405.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/audios/avisos/PR-0000172449.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/audios/avisos/PR-0000184259.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/audios/avisos/PR-0000199938.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/audios/avisos/PR-0000199939.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/audios/avisos/PR-0000201725.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/audios/avisos/PR-0000211717.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/audios/avisos/PR-0000215375.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/audios/avisos/PR-0000217244.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/audios/avisos/PR-0000218130.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/audios/avisos/PR-0000218131.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/audios/avisos/PR-0000218324.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/audios/avisos/PR-0000219296.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/audios/avisos/PR-0000219666.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/audios/avisos/PR-0000219958.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/audios/avisos/PR-0000220378.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/audios/avisos/PR-0000220381.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/audios/avisos/PR-0000220384.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/audios/avisos/PR-0000220385.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/audios/avisos/PR-0000220637.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/audios/avisos/PR-0000220737.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/audios/avisos/PR-0000220744.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/audios/avisos/PR-0000220752.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/audios/avisos/PR-0000220753.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/audios/avisos/PR-0000221032.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/audios/avisos/PR-0000221050.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/audios/avisos/PR-0000221051.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/audios/avisos/PR-0000221078.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/audios/avisos/PR-0000221164.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/audios/avisos/PR-0000221234.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/audios/avisos/PR-0000221305.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/audios/avisos/PR-0000221360.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/audios/avisos/PR-0000221380.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/audios/avisos/PR-0000221505.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/audios/avisos/PR-0000221549.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/audios/avisos/PR-0000221582.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/audios/avisos/PR-0000221583.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/audios/avisos/PR-0000221697.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/audios/avisos/PR-0000221698.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/audios/avisos/PR-0000221811.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/audios/avisos/PR-0000221816.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/audios/avisos/PR-0000221917.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/audios/horas/2016-11-21_12-00-00_AQP_MELODIA-FM_FM.mp3" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rec/__init__.py" afterPath="$PROJECT_DIR$/rec/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rec/huellas.py" afterPath="$PROJECT_DIR$/rec/huellas.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rec/util.py" afterPath="$PROJECT_DIR$/rec/util.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test.py" afterPath="$PROJECT_DIR$/test.py" />
     </list>
     <ignored path="ironrec.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -80,14 +32,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="test.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="333">
-              <caret line="73" column="23" selection-start-line="73" selection-start-column="23" selection-end-line="73" selection-end-column="23" />
+            <state relative-caret-position="284">
+              <caret line="71" column="0" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
               <folding>
                 <element signature="e#0#43#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pydevd.py" pinned="false" current-in-tab="false">
+        <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/pydevd.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="165">
+              <caret line="963" column="0" selection-start-line="963" selection-start-column="0" selection-end-line="963" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -114,12 +76,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/rec/__init__.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="638">
-              <caret line="35" column="18" selection-start-line="35" selection-start-column="18" selection-end-line="35" selection-end-column="18" />
-              <folding />
+            <state relative-caret-position="880">
+              <caret line="40" column="22" selection-start-line="40" selection-start-column="22" selection-end-line="40" selection-end-column="22" />
+              <folding>
+                <element signature="e#0#9#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -180,10 +144,10 @@
         <option value="$PROJECT_DIR$/rec/database.py" />
         <option value="$PROJECT_DIR$/api.py" />
         <option value="$PROJECT_DIR$/rec/huellas.py" />
-        <option value="$PROJECT_DIR$/rec/__init__.py" />
         <option value="$PROJECT_DIR$/app.config" />
         <option value="$PROJECT_DIR$/rec/util.py" />
         <option value="$PROJECT_DIR$/test.py" />
+        <option value="$PROJECT_DIR$/rec/__init__.py" />
       </list>
     </option>
   </component>
@@ -275,6 +239,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="rec" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rec" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rec" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="baseconocimiento" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -573,24 +551,24 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1698" height="1018" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20178571" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20178571" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.38479" sideWeight="0.50238097" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.38479" sideWeight="0.50476193" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24063565" sideWeight="0.49761903" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.38479" sideWeight="0.49761903" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.38479" sideWeight="0.4952381" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39905363" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3155505" sideWeight="0.7196429" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24132492" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -651,15 +629,10 @@
           <line>165</line>
           <option name="timeStamp" value="123" />
         </line-breakpoint>
-        <line-breakpoint suspend="THREAD" type="python-line">
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/rec/__init__.py</url>
-          <line>139</line>
-          <option name="timeStamp" value="130" />
-        </line-breakpoint>
-        <line-breakpoint suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/rec/__init__.py</url>
-          <line>108</line>
-          <option name="timeStamp" value="133" />
+          <line>38</line>
+          <option name="timeStamp" value="140" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
@@ -672,7 +645,7 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="140" />
+      <option name="time" value="141" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
@@ -683,7 +656,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/baseconocimiento/file1.text" />
     <entry file="file://C:/Python27/Lib/site-packages/MySQLdb/cursors.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="6105">
@@ -833,13 +805,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/rec/reconocimiento.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="7" column="32" selection-start-line="7" selection-start-column="32" selection-end-line="7" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/recargaravisos.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -874,14 +839,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/rec/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="638">
-          <caret line="35" column="18" selection-start-line="35" selection-start-column="18" selection-end-line="35" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app.config">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="154">
@@ -900,12 +857,38 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/pydevd.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="963" column="0" selection-start-line="963" selection-start-column="0" selection-end-line="963" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="333">
-          <caret line="73" column="23" selection-start-line="73" selection-start-column="23" selection-end-line="73" selection-end-column="23" />
+        <state relative-caret-position="284">
+          <caret line="71" column="0" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
           <folding>
             <element signature="e#0#43#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rec/reconocimiento.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="7" column="18" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rec/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="880">
+          <caret line="40" column="22" selection-start-line="40" selection-start-column="22" selection-end-line="40" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
           </folding>
         </state>
       </provider>
