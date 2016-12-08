@@ -2,6 +2,9 @@ import os
 import dicttoxml
 import fnmatch
 from hashlib import sha1
+import json
+RUTA_CONFIG = "app.config"
+
 
 def grabarXML(rutaDirectorio, nombre, *data):
     xml = dicttoxml.dicttoxml(data, custom_root='avisos', attr_type=False)
@@ -34,3 +37,12 @@ def ObtenerHashArchivo( rutaArchivo, blocksize=2 ** 20):
                 break
             s.update(buf)
     return s.hexdigest().upper()
+
+def getConfig():
+    configpath = RUTA_CONFIG
+    try:
+        with open(configpath) as f:
+            config = json.load(f)
+    except IOError as err:
+        print("Ocurrio un error leyendo el archivo de configuracion: %s. Exiting" % (str(err)))
+    return config

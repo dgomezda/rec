@@ -33,8 +33,7 @@ class Rec(object):
     BD_USER = "root"
     BD_PASSWD = "toor"
     BD_ID = "ironrec"
-    BD_PORT = 3306
-    #3311
+    BD_PORT = 3311
 
     def __init__(self):
         self.db = Database(user=self.BD_USER, passwd=self.BD_PASSWD, host = self.BD_HOST, db = self.BD_ID, port = self.BD_PORT  )

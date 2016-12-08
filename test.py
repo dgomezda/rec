@@ -1,4 +1,4 @@
-from rec import Rec, reconocerArchivo
+from rec import Rec, reconocerArchivo, util
 import multiprocessing
 from multiprocessing import freeze_support
 
@@ -63,3 +63,16 @@ import time
     #datos = {}
     #grabarXML('baseconocimiento/','archivo',datos)
     #rec.reconocerDirectorio('audios/horas')
+
+
+from rec import Rec
+rec = Rec()
+rec.ResetBD()
+rec.ProcesarDirectorio()
+rec.reconocerDirectorio('audios/horas')
+
+#print util.getConfig()
+
+
+
+
