@@ -1,16 +1,13 @@
 import os
-from rec.util import grabarXML, LeerDirectorio, ExtraerNombreArchivo, ObtenerHashArchivo
+from rec.util import GrabarXML, LeerDirectorio, ExtraerNombreArchivo, ObtenerHashArchivo, GrabarXML, ObtenerConfiguracion
 from rec.huellas import obtenerHuellas
-from rec.reconocimiento import _recognize
-
+from rec.reconocimiento import reconocer
 import warnings
 import multiprocessing
 warnings.filterwarnings("ignore")
-from rec.util import grabarXML
 import time
 from pydub import AudioSegment
 import numpy as np
-
 
 from rec.database import Database
 
@@ -18,25 +15,33 @@ from rec.database import Database
 class Rec(object):
     AVISO = 1
     HORA = 2
-    DIR_AVISO = "audios/avisos/"
-    DIR_HORA = "audios/horas/"
-    DIR_AVISO_PROCESADOS = "baseconocimiento/"
-
     DEFAULT_WINDOW_SIZE = 4096
     DEFAULT_OVERLAP_RATIO = 0.5
     DEFAULT_HIT_MIN  = 10
     FACTOR_OFFSET = 1
 
-    #BD
-    BD_HOST = "127.0.0.1"
-    BD_USER = "root"
-    BD_PASSWD = "toor"
-    BD_ID = "ironrec"
-    BD_PORT = 3311
+    #FROM CONFIG
+    BD_HOST = ""
+    BD_USER = ""
+    BD_PASSWD = ""
+    BD_ID = ""
+    BD_PORT = 0
+    DIR_AVISO = ""
+    DIR_HORA = ""
+    DIR_AVISO_PROCESADOS = ""
 
     def __init__(self):
+        cnf = util.ObtenerConfiguracion()
+        self.BD_HOST = cnf["BD_HOST"]
+        self.BD_USER = cnf["BD_USER"]
+        self.BD_PASSWD = cnf["BD_PASSWD"]
+        self.BD_ID = cnf["BD_ID"]
+        self.BD_PORT = cnf["BD_PORT"]
+        self.DIR_AVISO = cnf["DIR_AVISO"]
+        self.DIR_HORA = cnf["DIR_HORA"]
+        self.DIR_AVISO_PROCESADOS = cnf["DIR_AVISO_PROCESADOS"]
         self.db = Database(user=self.BD_USER, passwd=self.BD_PASSWD, host = self.BD_HOST, db = self.BD_ID, port = self.BD_PORT  )
-        #print "Inicializando..."
+        print "Inicializando..."
 
     def ResetBD(self):
         self.db.limpiar()
@@ -79,7 +84,9 @@ class Rec(object):
         channel_amount = len(channels)
 
         for channeln, channel in enumerate(channels):
-            hashes = obtenerHuellas(channel, Fs=Fs)
+            hashes = obtenerHuellas(channel, Fs=Fs, 
+                                    wsize=self.DEFAULT_WINDOW_SIZE,
+                                    wratio=self.DEFAULT_OVERLAP_RATIO)
             result |= set(hashes)
         return nombre, result, hashArchivo, duracion
 
@@ -132,9 +139,9 @@ def reconocerArchivo(rec,filename):
     frames, fs, hashArchivo, duracion = rec.LeerArchivo(filename)
     t = time.time()
     print "reconociendo hora = : %s ..." % (nombre)
-    matches = _recognize(rec.db, fs , *frames)
+    matches = reconocer(rec.db, fs, rec.DEFAULT_WINDOW_SIZE, rec.DEFAULT_OVERLAP_RATIO, rec.DEFAULT_HIT_MIN, rec.FACTOR_OFFSET  , *frames)
     t = time.time() - t
     print("time to reconize : %s", t)
-    grabarXML(rec.DIR_AVISO_PROCESADOS,nombre,matches)
+    GrabarXML(rec.DIR_AVISO_PROCESADOS,nombre,matches)
     return matches
 

@@ -40,12 +40,10 @@ class Database(object):
                 PRIMARY KEY (`horaId`),
                 UNIQUE KEY `horaId` (`horaId`)
             ) ENGINE=INNODB;"""
-
     INSERT_HUELLAS = "INSERT IGNORE INTO huellas (hash, avisoId, offset) values (UNHEX(%s), %s, %s);"
     INSERT_AVISOS = "INSERT INTO avisos (nombre, sha1, duracion) values (%s, UNHEX(%s), %s);"
     INSERT_HORAS = "INSERT INTO horas (nombre, fechacreacion) values ( %s , CURRENT_TIMESTAMP);"
     DELETE_HUELLAS_NOPROCESADAS = "DELETE FROM avisos WHERE procesado = 0;"
-
     UPDATE_AVISO_PROCESADO = "UPDATE avisos SET procesado = 1 WHERE avisoId = %s;"
     UPDATE_HORA_PROCESADO = "UPDATE horas SET procesado = 1, resultado = %s, fechaprocesado = CURRENT_TIMESTAMP WHERE horaId = %s ;"
 
@@ -56,17 +54,13 @@ class Database(object):
     SELECT_HORA_HORAID = "SELECT horaId, nombre, procesado, resultado, fechacreacion, fechaprocesado FROM horas WHERE horaId = %s;"
     SELECT_HORAS_LIKENOMBRE ="SELECT horaId, nombre, procesado, resultado, fechacreacion, fechaprocesado FROM horas " \
                   "where INSTR(nombre, %s) > 0"
-
     SELECT_HORAS = "SELECT horaId, nombre, procesado, resultado, fechacreacion, fechaprocesado FROM horas " \
                   "WHERE horaId = %s " \
                   "union " \
                   "SELECT horaId, nombre, procesado, resultado, fechacreacion, fechaprocesado FROM horas " \
                   "where fechacreacion > %s and fechacreacion < %s " \
                   ""
-
     SELECT_ULTIMA_HORA = "SELECT horaId FROM horas  order by horaId desc limit 1;"
-
-
     SELECT_AVISOS_LIKENOMBRE = "SELECT avisoId, nombre, procesado, sha1, duracion FROM avisos " \
                               "where INSTR(nombre, %s) > 0"
 
@@ -115,23 +109,16 @@ class Database(object):
                 yield row
     #@profile
     def return_matches(self, hashes):
-        #t = time.time()
-        #mapper = {}
         mapper = dict((x.upper(), y) for x, y in hashes)
-        #for hash, offset in hashes:
-        #    mapper[hash.upper()] = offset
         values = mapper.keys()
         with self.cursor() as cur:
             for split_values in grouper(values, 1000):
-                # Create our IN part of the query
                 query = self.SELECT_MULTIPLE
                 query = query % ', '.join(['UNHEX(%s)'] * len(split_values))
                 cur.execute(query, split_values)
                 for hash, sid, offset in cur:
                     songOffset = mapper[hash]
                     yield (sid,  songOffset - offset)
-        #t = time.time() - t
-       # print("totalTime  return_matches : %s", t)
 
     def return_matcheslarge(self, hashes):
         mapper = {}
@@ -198,7 +185,6 @@ def grouper(iterable, n, fillvalue=None):
 
 class Cursor(object):
     _cache = Queue.Queue(maxsize=5)
-
     def __init__(self, cursor_type=mysql.cursors.Cursor, **options):
         super(Cursor, self).__init__()
 
@@ -207,7 +193,6 @@ class Cursor(object):
         except Queue.Empty:
             conn = mysql.connect(**options)
         else:
-            # Ping the connection before using it from the cache.
             conn.ping(True)
 
         self.conn = conn
@@ -223,14 +208,10 @@ class Cursor(object):
         return self.cursor
 
     def __exit__(self, extype, exvalue, traceback):
-        # if we had a MySQL related error we try to rollback the cursor.
         if extype is mysql.MySQLError:
             self.cursor.rollback()
-
         self.cursor.close()
         self.conn.commit()
-
-        # Put it back on the queue
         try:
             self._cache.put_nowait(self.conn)
         except Queue.Full:

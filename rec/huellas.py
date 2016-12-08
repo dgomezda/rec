@@ -6,12 +6,10 @@ from scipy.ndimage.filters import maximum_filter
 from scipy.ndimage.morphology import (generate_binary_structure,
                                       iterate_structure, binary_erosion)
 
-DEFAULT_FS = 32000
-DEFAULT_WINDOW_SIZE = 4096
-DEFAULT_OVERLAP_RATIO = 0.5
+
 DEFAULT_FAN_VALUE = 15
 DEFAULT_AMP_MIN = 10
-DEFAULT_HIT_MIN = 10
+#DEFAULT_HIT_MIN = 10
 PEAK_NEIGHBORHOOD_SIZE = 20
 
 PEAK_SORT = True
@@ -21,11 +19,10 @@ IDX_TIME_J = 1
 MIN_HASH_TIME_DELTA = 0
 MAX_HASH_TIME_DELTA = 200
 FINGERPRINT_REDUCTION = 20
-#FACTOR_OFFSET = 1
 
-def obtenerHuellas(channel_samples, Fs=DEFAULT_FS,
-                   wsize=DEFAULT_WINDOW_SIZE,
-                   wratio=DEFAULT_OVERLAP_RATIO,
+def obtenerHuellas(channel_samples,Fs,
+                   wsize,
+                   wratio,
                    fan_value=DEFAULT_FAN_VALUE,
                    amp_min=DEFAULT_AMP_MIN):
     arr2D = mlab.specgram(
@@ -86,8 +83,3 @@ def get_2D_peaks(arr2D, amp_min):
     time_idx = [x[0] for x in peaks_filtered]
 
     return zip(frequency_idx, time_idx)
-
-    # fingerprint
-
-
-

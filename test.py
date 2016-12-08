@@ -61,9 +61,13 @@ import time
 #if __name__ == '__main__':
     #freeze_support()
     #datos = {}
-    #grabarXML('baseconocimiento/','archivo',datos)
+    #GrabarXML('baseconocimiento/','archivo',datos)
     #rec.reconocerDirectorio('audios/horas')
 
+#import time
+#t = time.time()
+#t = time.time() - t
+#print("time to obtenerhuellas : %s", t)
 
 from rec import Rec
 rec = Rec()
@@ -71,7 +75,8 @@ rec.ResetBD()
 rec.ProcesarDirectorio()
 rec.reconocerDirectorio('audios/horas')
 
-#print util.getConfig()
+#cnf = util.ObtenerConfiguracion()
+#print  cnf["BD_HOST"]
 
 
 

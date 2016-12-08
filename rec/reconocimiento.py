@@ -1,26 +1,16 @@
 from huellas import obtenerHuellas
-import time
-DEFAULT_WINDOW_SIZE = 4096
-DEFAULT_OVERLAP_RATIO = 0.5
-DEFAULT_HIT_MIN = 10
-FACTOR_OFFSET = 1
 
-def _recognize( db, fs , *data):
-    matches = []
+def reconocer( db, fs,  windowSize, overlap, hitMin, factorOffset , *data):
+    coincidencias = []
     for d in data:
-        matches.extend(find_matches(db, d, fs))
-    return align_matches(db, matches , fs)
+        coincidencias.extend(buscar_coincidencia(db, d, fs, windowSize, overlap))
+    return alinear_horario(db, coincidencias , fs, windowSize, overlap, hitMin, factorOffset)
 
-
-def find_matches(db, samples, fs):
-    t = time.time()
-    hashes = obtenerHuellas(samples, fs)
-    t = time.time() - t
-    print("time to obtenerhuellas : %s", t)
+def buscar_coincidencia(db, samples, fs,  windowSize, overlap):
+    hashes = obtenerHuellas(samples, fs,  windowSize, overlap)
     return db.return_matches(hashes)
 
-
-def align_matches(db, matches, fs):
+def alinear_horario(db, matches, fs, windowSize, overlap, hitMin, factorOffset):
     diff_counter = {}
     listaAvisoRec = []
     for tup in matches:
@@ -31,14 +21,14 @@ def align_matches(db, matches, fs):
             diff_counter[diff][sid] = 0
         diff_counter[diff][sid] += 1
     for key, value in diff_counter.iteritems():
-        dic = value;
+        dic = value
         for key1, value1 in dic.iteritems():
-            if value1 > DEFAULT_HIT_MIN:
+            if value1 > hitMin:
                 aviso = db.obtenerAviso(key1)
                 nseconds = round(float(key) / fs *
-                                 DEFAULT_WINDOW_SIZE *
-                                 DEFAULT_OVERLAP_RATIO *
-                                 FACTOR_OFFSET, 5)
+                                 windowSize *
+                                 overlap *
+                                 factorOffset, 5)
                 avisoRec = {
                     'avisoId': key1,
                     'nombre': aviso.get('nombre', None),

@@ -6,7 +6,7 @@ import json
 RUTA_CONFIG = "app.config"
 
 
-def grabarXML(rutaDirectorio, nombre, *data):
+def GrabarXML(rutaDirectorio, nombre, *data):
     xml = dicttoxml.dicttoxml(data, custom_root='avisos', attr_type=False)
     rutaArchivo = rutaDirectorio + nombre + '.xml'
     f = open(rutaArchivo, 'w+')
@@ -38,7 +38,7 @@ def ObtenerHashArchivo( rutaArchivo, blocksize=2 ** 20):
             s.update(buf)
     return s.hexdigest().upper()
 
-def getConfig():
+def ObtenerConfiguracion():
     configpath = RUTA_CONFIG
     try:
         with open(configpath) as f:
