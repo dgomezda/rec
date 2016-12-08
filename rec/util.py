@@ -3,6 +3,7 @@ import dicttoxml
 import fnmatch
 from hashlib import sha1
 import json
+import sys
 RUTA_CONFIG = "app.config"
 
 
@@ -44,5 +45,6 @@ def ObtenerConfiguracion():
         with open(configpath) as f:
             config = json.load(f)
     except IOError as err:
-        print("Ocurrio un error leyendo el archivo de configuracion: %s. Exiting" % (str(err)))
+        print("Ocurrio un error leyendo el archivo de configuracion: %s. La ejecucion del programa ha concluido." % (str(err)))
+        sys.exit(1)
     return config

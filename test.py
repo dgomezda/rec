@@ -71,9 +71,11 @@ import time
 
 from rec import Rec
 rec = Rec()
-rec.ResetBD()
-rec.ProcesarDirectorio()
-rec.reconocerDirectorio('audios/horas')
+#rec.ResetBD()
+#rec.ProcesarDirectorio()
+if __name__ == '__main__':
+    freeze_support()
+    rec.reconocerDirectorio('audios/horas')
 
 #cnf = util.ObtenerConfiguracion()
 #print  cnf["BD_HOST"]

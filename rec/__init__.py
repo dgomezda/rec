@@ -41,7 +41,7 @@ class Rec(object):
         self.DIR_HORA = cnf["DIR_HORA"]
         self.DIR_AVISO_PROCESADOS = cnf["DIR_AVISO_PROCESADOS"]
         self.db = Database(user=self.BD_USER, passwd=self.BD_PASSWD, host = self.BD_HOST, db = self.BD_ID, port = self.BD_PORT  )
-        print "Inicializando..."
+        #print "Inicializando..."
 
     def ResetBD(self):
         self.db.limpiar()
@@ -109,32 +109,33 @@ class Rec(object):
         else:
             nprocesses = 1 if nprocesses <= 0 else nprocesses
 
-        print reconocerArchivo(self, rutaAvisos[0])
-        #pool = multiprocessing.Pool(nprocesses)
+        #print reconocerArchivo(self, rutaAvisos[0])
+        pool = multiprocessing.Pool(nprocesses)
 
-        #iterator = pool.imap_unordered(reconocerArchivo,
-        #                              rutaAvisos)
+        iterator = pool.imap_unordered(reconocerArchivo,
+                                      rutaAvisos)
         #print iterator.next()
 
-        #while True:
-        #    try:
-        #        print iterator.next()
-        #    except multiprocessing.TimeoutError:
-        #        continue
-        #    except StopIteration:
-        #        break
-        #    except:
-        #        print("Failed fingerprinting")
-        #    else:
-        #        pass
-        #        #print("Completo.")
+        while True:
+            try:
+                print iterator.next()
+            except multiprocessing.TimeoutError:
+                continue
+            except StopIteration:
+                break
+            except:
+                print("Failed fingerprinting")
+            else:
+                pass
+                #print("Completo.")
 
-        #pool.close()
-        #pool.join()
+        pool.close()
+        pool.join()
 
 
 
-def reconocerArchivo(rec,filename):
+def reconocerArchivo(filename):
+    rec = Rec()
     nombre = ExtraerNombreArchivo(filename)
     frames, fs, hashArchivo, duracion = rec.LeerArchivo(filename)
     t = time.time()
