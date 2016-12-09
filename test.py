@@ -69,17 +69,35 @@ import time
 #t = time.time() - t
 #print("time to obtenerhuellas : %s", t)
 
-from rec import Rec
-rec = Rec()
+#from rec import Rec
+#rec = Rec()
 #rec.ResetBD()
 #rec.ProcesarDirectorio()
+#if __name__ == '__main__':
+#    freeze_support()
+#    rec.reconocerDirectorio('audios/horas')
+
+
+import time
+rec = Rec()
 if __name__ == '__main__':
     freeze_support()
-    rec.reconocerDirectorio('audios/horas')
+    while True:
+        time.sleep(5)
+        rec.reconocerDirectorio('audios/horas')
 
-#cnf = util.ObtenerConfiguracion()
-#print  cnf["BD_HOST"]
+#def do_main_program():
+#    freeze_support()
+#    time.sleep(5)
+#    print("searching...")
+#    rec.reconocerDirectorio('audios/horas')
 
+#while True:
+#    time.sleep( 1 )
+#    try:
+#        do_main_program()
+#    except:
+#        pass
 
 
 
