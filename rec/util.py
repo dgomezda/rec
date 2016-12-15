@@ -28,6 +28,8 @@ def LeerDirectorio(ruta=None):
 def ExtraerNombreArchivo(rutaArchivo):
     return os.path.splitext(os.path.basename(rutaArchivo))[0]
 
+def EliminarArchivo(rutaArchivo):
+    os.remove(rutaArchivo);
 
 def ObtenerHashArchivo( rutaArchivo, blocksize=2 ** 20):
     s = sha1()

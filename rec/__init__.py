@@ -1,5 +1,5 @@
 import os
-from rec.util import GrabarXML, LeerDirectorio, ExtraerNombreArchivo, ObtenerHashArchivo, GrabarXML, ObtenerConfiguracion
+from rec.util import GrabarXML, LeerDirectorio, ExtraerNombreArchivo, ObtenerHashArchivo, GrabarXML, ObtenerConfiguracion, EliminarArchivo
 from rec.huellas import obtenerHuellas
 from rec.reconocimiento import reconocer
 import warnings
@@ -53,6 +53,7 @@ class Rec(object):
             print "%d.- aprendiendo aviso : %s" % (contadorAviso, aviso[0])
             self.aprenderAviso(aviso[0])
             contadorAviso += 1
+            EliminarArchivo(aviso[0])
 
     def LeerArchivo(self, rutaArchivo):
         contenido = AudioSegment.from_file(rutaArchivo)
@@ -144,5 +145,6 @@ def reconocerArchivo(filename):
     t = time.time() - t
     print("time to reconize : %s", t)
     GrabarXML(rec.DIR_AVISO_PROCESADOS,nombre,matches)
+    EliminarArchivo(filename);
     return matches
 
