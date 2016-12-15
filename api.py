@@ -1,6 +1,7 @@
 from flask import Flask,  request, json, jsonify, make_response
 from flask_restful import Api
 from rec import Rec, reconocerArchivo
+from rec.util import ObtenerConfiguracion
 rec = Rec()
 
 import os
@@ -169,4 +170,7 @@ def getResponse(errorCode=0, obj=None):
     })
 
 if __name__ == '__main__':
-    app.run(port=5000)
+    cnf = ObtenerConfiguracion()
+    API_HOST = cnf["API_HOST"]
+    API_PORT = cnf["API_PORT"]
+    app.run(host=API_HOST, port=API_PORT)
