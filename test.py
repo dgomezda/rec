@@ -78,13 +78,13 @@ import time
 #    rec.reconocerDirectorio('audios/horas')
 
 
-import time
-rec = Rec()
-if __name__ == '__main__':
-    freeze_support()
-    while True:
-        time.sleep(5)
-        rec.reconocerDirectorio('audios/horas')
+#import time
+#rec = Rec()
+#if __name__ == '__main__':
+#    freeze_support()
+#    while True:
+#        time.sleep(5)
+#        rec.reconocerDirectorio('audios/horas')
 
 #def do_main_program():
 #    freeze_support()
@@ -100,4 +100,15 @@ if __name__ == '__main__':
 #        pass
 
 
+#import os
+#import fnmatch
+#ruta="audios/avisos/"
+#avisos = []
+#extension = "mp3"
+#for rutadir, nombredir, archivos in os.walk(ruta):
+#    print(nombredir)
+#    print(archivos)
+#    for f in fnmatch.filter(archivos, "*.%s" % extension):
+#        p = os.path.join(rutadir, f)
+#        avisos.append((p, extension))
 
