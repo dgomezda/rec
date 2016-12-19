@@ -8,7 +8,7 @@ warnings.filterwarnings("ignore")
 import time
 from pydub import AudioSegment
 import numpy as np
-
+import json
 from rec.database import Database
 
 
@@ -135,16 +135,25 @@ class Rec(object):
 
 
 
-def reconocerArchivo(filename):
+def reconocerArchivo(rutaArchivo):
     rec = Rec()
-    nombre = ExtraerNombreArchivo(filename)
-    frames, fs, hashArchivo, duracion = rec.LeerArchivo(filename)
+    nombre = ExtraerNombreArchivo(rutaArchivo)
+    hora = rec.db.obtenerHora_nombre(nombre)
+    if hora is None:
+        horaId = rec.db.insert_hora(nombre)
+    else:
+        horaId = hora['horaId']
+
+    frames, fs, hashArchivo, duracion = rec.LeerArchivo(rutaArchivo)
     t = time.time()
     print "reconociendo hora = : %s ..." % (nombre)
     matches = reconocer(rec.db, fs, rec.DEFAULT_WINDOW_SIZE, rec.DEFAULT_OVERLAP_RATIO, rec.DEFAULT_HIT_MIN, rec.FACTOR_OFFSET  , *frames)
     t = time.time() - t
     print("time to reconize : %s", t)
-    GrabarXML(rec.DIR_AVISO_PROCESADOS,nombre,matches)
-    EliminarArchivo(filename);
+    if matches is not None :
+        resultadoJson = json.dumps(matches)
+        rec.db.marcar_hora_procesado(horaId, resultadoJson)
+        GrabarXML(rec.DIR_AVISO_PROCESADOS,nombre,matches)
+    EliminarArchivo(rutaArchivo);
     return matches
 

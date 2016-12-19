@@ -50,10 +50,10 @@ class Database(object):
     SELECT_AVISOS = "SELECT avisoId, nombre, HEX(sha1) as sha1 FROM avisos WHERE procesado = 1;"
     SELECT_MULTIPLE = "SELECT HEX(hash), avisoId, offset FROM huellas WHERE hash IN (%s);"
     SELECT_AVISO = "SELECT nombre, HEX(sha1) as sha1, duracion FROM avisos WHERE avisoId = %s;"
-    #SELECT_HORA_NOMBRE = "SELECT horaId FROM horas WHERE nombre = %s;"
+    SELECT_HORA_NOMBRE = "SELECT horaId FROM horas WHERE nombre = %s;"
     SELECT_HORA_HORAID = "SELECT horaId, nombre, procesado, resultado, fechacreacion, fechaprocesado FROM horas WHERE horaId = %s;"
     SELECT_HORAS_LIKENOMBRE ="SELECT horaId, nombre, procesado, resultado, fechacreacion, fechaprocesado FROM horas " \
-                  "where INSTR(nombre, %s) > 0"
+                  "where INSTR(nombre, %s) > 0 and fechacreacion >= %s and fechacreacion <= %s and (procesado = %s or -1 = %s)"
     SELECT_HORAS = "SELECT horaId, nombre, procesado, resultado, fechacreacion, fechaprocesado FROM horas " \
                   "WHERE horaId = %s " \
                   "union " \
@@ -61,7 +61,7 @@ class Database(object):
                   "where fechacreacion > %s and fechacreacion < %s " \
                   ""
     SELECT_ULTIMA_HORA = "SELECT horaId FROM horas  order by horaId desc limit 1;"
-    SELECT_AVISOS_LIKENOMBRE = "SELECT avisoId, nombre, procesado, sha1, duracion FROM avisos " \
+    SELECT_AVISOS_LIKENOMBRE = "SELECT avisoId, nombre, procesado,   duracion FROM avisos " \
                               "where INSTR(nombre, %s) > 0"
 
     def inicializar(self):
@@ -96,7 +96,7 @@ class Database(object):
 
     def marcar_hora_procesado(self, horaId, resultado):
         with self.cursor() as cur:
-            cur.execute(self.UPDATE_HORA_PROCESADO, ('', horaId,))
+            cur.execute(self.UPDATE_HORA_PROCESADO, (resultado, horaId,))
 
     def marcar_aviso_procesado(self,  avisoId):
         with self.cursor() as cur:
@@ -147,24 +147,25 @@ class Database(object):
             cur.execute(self.SELECT_HORA_HORAID, (horaId,))
             return cur.fetchone()
 
+    def obtenerHora_nombre(self, nombre):
+        with self.cursor(cursor_type=DictCursor) as cur:
+            cur.execute(self.SELECT_HORA_NOMBRE, (nombre,))
+            return cur.fetchone()
 
     def obtenerUltimaHora(self, nombre):
         with self.cursor(cursor_type=DictCursor) as cur:
             cur.execute(self.SELECT_ULTIMA_HORA)
             return cur.fetchone()
 
-    def obtenerHoras(self, nombre, fecha):
-        #TODO: Implementar filtro por fecha
+    def obtenerHoras(self, nombre,  fechai, fechaf, procesado):
         lista = []
         query = self.SELECT_HORAS_LIKENOMBRE
-        #query = self.SELECT_HORAS.join(query)
         with self.cursor(cursor_type=DictCursor) as cur:
-            cur.execute(query, (nombre,))
+            cur.execute(query, (nombre,fechai, fechaf, procesado,procesado,))
             lista = [row for row in cur]
         return lista
 
-    def obtenerAvisos(self, nombre, fecha):
-        # TODO: Implementar filtro por fecha
+    def obtenerAvisos(self, nombre):
         lista = []
         query = self.SELECT_AVISOS_LIKENOMBRE
         with self.cursor(cursor_type=DictCursor) as cur:

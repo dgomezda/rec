@@ -3,7 +3,7 @@ import multiprocessing
 from multiprocessing import freeze_support
 
 import time
-#rec = Rec()
+rec = Rec()
 
 #rec.ResetBD()
 #rec.aprenderAviso('audios/avisos/avisoarie0.mp3',None)
@@ -12,7 +12,7 @@ import time
 
 
 #t = time.time()
-#print reconocerArchivo('audios/horas/hora01.mp3')
+#print reconocerArchivo('audios/horas/programa01.mp3')
 #t = time.time() - t
 #print("totalTime : %s", t)
 
@@ -111,4 +111,12 @@ import time
 #    for f in fnmatch.filter(archivos, "*.%s" % extension):
 #        p = os.path.join(rutadir, f)
 #        avisos.append((p, extension))
+
+
+
+#print rec.db.obtenerHoras('programa01', '20161218', '20161218')
+
+#import datetime
+#string_date = '2016-12-18 00:00:00'
+#print datetime.datetime.strptime(string_date, "%Y-%m-%d %H:%M:%S")
 
