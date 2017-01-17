@@ -34,6 +34,7 @@ class Database(object):
                     `horaId` mediumint unsigned not null auto_increment,
                     `nombre` varchar(250) not null,
                     `procesado` tinyint default 0,
+                    `fs` int default 0,
                     `resultado` varchar(4000) null,
                     `fechaCreacion`  datetime default null,
                     `fechaProcesado` datetime default null,
@@ -46,6 +47,7 @@ class Database(object):
     DELETE_HUELLAS_NOPROCESADAS = "DELETE FROM avisos WHERE procesado = 0;"
     UPDATE_AVISO_PROCESADO = "UPDATE avisos SET procesado = 1 WHERE avisoId = %s;"
     UPDATE_HORA_PROCESADO = "UPDATE horas SET procesado = 1, resultado = %s, fechaprocesado = CURRENT_TIMESTAMP WHERE horaId = %s ;"
+    UPDATE_METADATA_HORA = "UPDATE horas SET fs = %s WHERE horaId = %s ;"
 
     SELECT_AVISOS = "SELECT avisoId, nombre, HEX(sha1) as sha1 FROM avisos WHERE procesado = 1;"
     SELECT_MULTIPLE = "SELECT HEX(hash), avisoId, offset FROM huellas WHERE hash IN (%s);"
@@ -63,6 +65,7 @@ class Database(object):
     SELECT_ULTIMA_HORA = "SELECT horaId FROM horas  order by horaId desc limit 1;"
     SELECT_AVISOS_LIKENOMBRE = "SELECT avisoId, nombre, procesado,   duracion FROM avisos " \
                               "where INSTR(nombre, %s) > 0"
+    SELECT_HORAS_PENDIENTES_RECONOCER = "SELECT horaId, nombre, fs FROM horas where procesado = 0;"
 
     def inicializar(self):
         with self.cursor() as cur:
@@ -97,6 +100,10 @@ class Database(object):
     def marcar_hora_procesado(self, horaId, resultado):
         with self.cursor() as cur:
             cur.execute(self.UPDATE_HORA_PROCESADO, (resultado, horaId,))
+
+    def update_metadata_hora(self, horaId, fs):
+        with self.cursor() as cur:
+            cur.execute(self.UPDATE_METADATA_HORA, (fs, horaId,))
 
     def marcar_aviso_procesado(self,  avisoId):
         with self.cursor() as cur:
@@ -162,6 +169,14 @@ class Database(object):
         query = self.SELECT_HORAS_LIKENOMBRE
         with self.cursor(cursor_type=DictCursor) as cur:
             cur.execute(query, (nombre,fechai, fechaf, procesado,procesado,))
+            lista = [row for row in cur]
+        return lista
+
+    def obtenerHorasPendientesReconocer(self):
+        lista = []
+        query = self.SELECT_HORAS_PENDIENTES_RECONOCER
+        with self.cursor(cursor_type=DictCursor) as cur:
+            cur.execute(query)
             lista = [row for row in cur]
         return lista
 

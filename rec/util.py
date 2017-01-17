@@ -8,12 +8,38 @@ RUTA_CONFIG = "app.config"
 
 
 def GrabarXML(rutaDirectorio, nombre, *data):
-    xml = dicttoxml.dicttoxml(data, custom_root='avisos', attr_type=False)
-    rutaArchivo = rutaDirectorio + nombre + '.xml'
-    f = open(rutaArchivo, 'w+')
-    f.write(xml)
-    f.close()
+    if len(data)>0:
+        xml = dicttoxml.dicttoxml(data[0], custom_root='Huellas', attr_type=False)
+        xml = xml.replace('item>','DataHuella>')
+        rutaArchivo = rutaDirectorio + nombre + '.xml'
+        f = open(rutaArchivo, 'w+')
+        f.write(xml)
+        f.close()
 
+def GrabarArchivoHuella(rutaArchivo, iter):
+    try:
+        esPrimerElemento = True
+        with open(rutaArchivo, 'w') as f:
+            for x in iter:
+                if esPrimerElemento:
+                    esPrimerElemento = False
+                else:
+                    f.write(",")
+                f.write(str(x))
+    except ValueError:
+        print("Ocurrio un error Grabando el archivo de huellas: %s. " % (str(ValueError)))
+        return False
+    return True
+
+
+def LeerArchivoAFP(rutaArchivo):
+    try:
+        with open(rutaArchivo, 'rb') as f:
+            huellas = eval(f.read())
+        return huellas
+    except ValueError:
+        print("Ocurrio un error leyendo el archivo de huellas: %s. " % (str(ValueError)))
+        return False
 
 def LeerDirectorio(ruta=None):
     avisos = []
@@ -28,8 +54,20 @@ def LeerDirectorio(ruta=None):
 def ExtraerNombreArchivo(rutaArchivo):
     return os.path.splitext(os.path.basename(rutaArchivo))[0]
 
+def ExtraerTipoArchivo(rutaArchivo):
+    return os.path.splitext(os.path.basename(rutaArchivo))[1]
+
 def EliminarArchivo(rutaArchivo):
     os.remove(rutaArchivo);
+
+def MoverArchivo(rutaArchivo, Directorio):
+    resultFileName = Directorio + ExtraerNombreArchivo(rutaArchivo) + "." + ExtraerTipoArchivo(rutaArchivo)
+    try:
+        os.remove(resultFileName)
+    except OSError:
+        pass
+    os.rename(rutaArchivo, resultFileName)
+
 
 def ObtenerHashArchivo( rutaArchivo, blocksize=2 ** 20):
     s = sha1()
@@ -50,3 +88,21 @@ def ObtenerConfiguracion():
         print("Ocurrio un error leyendo el archivo de configuracion: %s. La ejecucion del programa ha concluido." % (str(err)))
         sys.exit(1)
     return config
+
+def ObtenerMetaDatosdeArchivoHora(nombre):
+    dict = {}
+    try:
+        metadato = nombre.split('_')
+        dict['RegFecha'] = metadato[0].replace('-', '')
+        dict['RegHora'] = metadato[1].replace('-', ':')
+        dict['CiuCod'] = metadato[2]
+        dict['MedCod'] = metadato[3]
+        dict['TipMedCod'] = metadato[4]
+    except ValueError as err:
+        print("El archivo no tiene el nombre con el formato esperado, %s " % (str(nombre)))
+        dict['RegFecha'] = ''
+        dict['RegHora'] = ''
+        dict['CiuCod'] = ''
+        dict['MedCod'] = ''
+        dict['TipMedCod'] = ''
+    return dict

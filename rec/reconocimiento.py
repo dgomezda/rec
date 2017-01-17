@@ -1,16 +1,12 @@
 from huellas import obtenerHuellas
 
-def reconocer( db, fs,  windowSize, overlap, hitMin, factorOffset , *data):
+def reconocer( db, fs,  windowSize, overlap, hitMin, factorOffset, metadatoHora , *hashes):
     coincidencias = []
-    for d in data:
-        coincidencias.extend(buscar_coincidencia(db, d, fs, windowSize, overlap))
-    return alinear_horario(db, coincidencias , fs, windowSize, overlap, hitMin, factorOffset)
+    coincidencias.extend(db.return_matches(hashes[0]))
+    return alinear_horario(db, coincidencias , fs, windowSize, overlap, hitMin, factorOffset, metadatoHora)
 
-def buscar_coincidencia(db, samples, fs,  windowSize, overlap):
-    hashes = obtenerHuellas(samples, fs,  windowSize, overlap)
-    return db.return_matches(hashes)
 
-def alinear_horario(db, matches, fs, windowSize, overlap, hitMin, factorOffset):
+def alinear_horario(db, matches, fs, windowSize, overlap, hitMin, factorOffset, metadatoHora):
     diff_counter = {}
     listaAvisoRec = []
     for tup in matches:
@@ -30,10 +26,14 @@ def alinear_horario(db, matches, fs, windowSize, overlap, hitMin, factorOffset):
                                  overlap *
                                  factorOffset, 5)
                 avisoRec = {
-                    'avisoId': key1,
+                    'CodOrd': key1,
                     'nombre': aviso.get('nombre', None),
-                    'Inicio': nseconds,
-                    'duracion': aviso.get('duracion', None),
+                    'CiuCod': metadatoHora.get('CiuCod', None),
+                    'MedCod': metadatoHora.get('MedCod', None),
+                    'RegHoraIni': nseconds,
+                    'RegDur': aviso.get('duracion', None),
+                    'RegFecha': metadatoHora.get('RegFecha', None),
+                    'TipoMedCod': metadatoHora.get('TipoMedCod', None),
                 }
                 listaAvisoRec.append(avisoRec)
     return listaAvisoRec

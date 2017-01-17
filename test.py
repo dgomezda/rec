@@ -120,3 +120,16 @@ rec = Rec()
 #string_date = '2016-12-18 00:00:00'
 #print datetime.datetime.strptime(string_date, "%Y-%m-%d %H:%M:%S")
 
+#from rec.util import AbrirArchivo
+#AbrirArchivo("")
+
+
+nombre = '2016-11-21_08-00-00_AQP_MELODIA-FM_FM'
+metadato = nombre.split('_')
+hora_fecha = metadato[0]
+hora_hora = metadato[1]
+hora_ciudad = metadato[2]
+hora_medio = metadato[3]
+hora_tipo = metadato[4]
+print (metadato)
+
