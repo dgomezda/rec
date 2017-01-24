@@ -33,13 +33,15 @@ def GrabarArchivoHuella(rutaArchivo, iter):
 
 
 def LeerArchivoAFP(rutaArchivo):
+    completo = False
+    huellas = []
     try:
         with open(rutaArchivo, 'rb') as f:
             huellas = eval(f.read())
-        return huellas
-    except ValueError:
-        print("Ocurrio un error leyendo el archivo de huellas: %s. " % (str(ValueError)))
-        return False
+            completo = True
+    except:
+        print("Archivo de huellas no valido")
+    return completo, huellas
 
 def LeerDirectorio(ruta=None):
     avisos = []
@@ -61,7 +63,7 @@ def EliminarArchivo(rutaArchivo):
     os.remove(rutaArchivo);
 
 def MoverArchivo(rutaArchivo, Directorio):
-    resultFileName = Directorio + ExtraerNombreArchivo(rutaArchivo) + "." + ExtraerTipoArchivo(rutaArchivo)
+    resultFileName = Directorio + ExtraerNombreArchivo(rutaArchivo) + ExtraerTipoArchivo(rutaArchivo)
     try:
         os.remove(resultFileName)
     except OSError:
@@ -91,6 +93,7 @@ def ObtenerConfiguracion():
 
 def ObtenerMetaDatosdeArchivoHora(nombre):
     dict = {}
+    completo = False
     try:
         metadato = nombre.split('_')
         dict['RegFecha'] = metadato[0].replace('-', '')
@@ -98,11 +101,12 @@ def ObtenerMetaDatosdeArchivoHora(nombre):
         dict['CiuCod'] = metadato[2]
         dict['MedCod'] = metadato[3]
         dict['TipMedCod'] = metadato[4]
-    except ValueError as err:
+        completo = True
+    except :
         print("El archivo no tiene el nombre con el formato esperado, %s " % (str(nombre)))
         dict['RegFecha'] = ''
         dict['RegHora'] = ''
         dict['CiuCod'] = ''
         dict['MedCod'] = ''
         dict['TipMedCod'] = ''
-    return dict
+    return completo, dict

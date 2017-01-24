@@ -29,7 +29,8 @@ class Rec(object):
     DIR_HORA = ""
     DIR_AVISO_PROCESADOS = ""
     DIR_BASECONOCIMIENTO = ""
-
+    MAX_PROC = 1
+    RESET_BD = 1
     def __init__(self):
         cnf = util.ObtenerConfiguracion()
         self.BD_HOST = cnf["BD_HOST"]
@@ -43,6 +44,8 @@ class Rec(object):
         self.DIR_BASECONOCIMIENTO = cnf["DIR_BASECONOCIMIENTO"]
         self.DIR_HORA_PROCESADA = cnf["DIR_HORA_PROCESADA"]
         self.DIR_HORA_HUELLA = cnf["DIR_HORA_HUELLA"]
+        self.MAX_PROC = cnf["MAX_PROC"]
+        self.RESET_BD = cnf["RESET_BD"]
         self.db = Database(user=self.BD_USER, passwd=self.BD_PASSWD, host = self.BD_HOST, db = self.BD_ID, port = self.BD_PORT )
         #print "Inicializando..."
 
@@ -101,37 +104,7 @@ class Rec(object):
             hashArchivo = aviso['sha1']
             self.avisos_set.add(hashArchivo)
 
-    def reconocerDirectorio(self, ruta):
-        rutaAvisos = []
-        for rutaArchivo, ext in LeerDirectorio(ruta):
-            rutaAvisos.append(rutaArchivo)
-        nprocesses = None
-        try:
-            nprocesses = nprocesses or multiprocessing.cpu_count()
-        except NotImplementedError:
-            nprocesses = 1
-        else:
-            nprocesses = 1 if nprocesses <= 0 else nprocesses
-        nprocesses = 1
-        #print reconocerArchivo(self, rutaAvisos[0])
-        pool = multiprocessing.Pool(nprocesses)
 
-        iterator = pool.imap_unordered(reconocerArchivo,
-                                      rutaAvisos)
-        while True:
-            try:
-                print iterator.next()
-            except multiprocessing.TimeoutError:
-                continue
-            except StopIteration:
-                break
-            except:
-                print("Failed fingerprinting")
-            else:
-                pass
-                #print("Completo.")
-        pool.close()
-        pool.join()
 
     def obtenerHuellasDirectorio(self, ruta):
         rutaAvisos = []
@@ -143,15 +116,17 @@ class Rec(object):
         except NotImplementedError:
             nprocesses = 1
         else:
-            nprocesses = 1 if nprocesses <= 0 else nprocesses
-        nprocesses = 1
+            nprocesses = 1
+        if nprocesses > self.MAX_PROC:
+            nprocesses = self.MAX_PROC
+
         #print grabarArchivoHuellas(rutaAvisos[0])
         pool = multiprocessing.Pool(nprocesses)
         iterator = pool.imap_unordered(grabarArchivoHuellas,
                                        rutaAvisos)
         while True:
             try:
-                print iterator.next()
+                iterator.next()
             except multiprocessing.TimeoutError:
                 continue
             except StopIteration:
@@ -172,15 +147,17 @@ class Rec(object):
         except NotImplementedError:
             nprocesses = 1
         else:
-            nprocesses = 1 if nprocesses <= 0 else nprocesses
-        nprocesses = 1
+            nprocesses = 1
+        if nprocesses > self.MAX_PROC:
+            nprocesses = self.MAX_PROC
+
         #print reconocerHuellaPendiente(horasPendientes[0])
         pool = multiprocessing.Pool(nprocesses)
         iterator = pool.imap_unordered(reconocerHuellaPendiente,
                                        horasPendientes)
         while True:
             try:
-                print iterator.next()
+                iterator.next()
             except multiprocessing.TimeoutError:
                 continue
             except StopIteration:
@@ -217,22 +194,59 @@ def grabarArchivoHuellas(rutaArchivo):
 
 def reconocerHuellaPendiente(hora):
     rec = Rec()
+    matches = []
     horaId = hora['horaId']
     nombre = hora['nombre']
     fs = hora['fs']
     t = time.time()
     rutaArchivoAFP =  rec.DIR_HORA_HUELLA + "/" + nombre + ".afp"
-    hashes = LeerArchivoAFP(rutaArchivoAFP)
     print "reconociendo hora = : %s ..." % (nombre)
-    metadatoHora = ObtenerMetaDatosdeArchivoHora(nombre)
-    matches = reconocer(rec.db, fs, rec.DEFAULT_WINDOW_SIZE, rec.DEFAULT_OVERLAP_RATIO, rec.DEFAULT_HIT_MIN, rec.FACTOR_OFFSET, metadatoHora , hashes)
-    t = time.time() - t
-    print("time to reconize : %s", t)
-    if matches is not None:
-        resultadoJson = json.dumps(matches)
-        rec.db.marcar_hora_procesado(horaId, resultadoJson)
-        GrabarXML(rec.DIR_BASECONOCIMIENTO,nombre,matches)
+    obtenerMetaDatosOk, metadatoHora = ObtenerMetaDatosdeArchivoHora(nombre)
+    if obtenerMetaDatosOk == True:
+        leerAchivoAFPOk, hashes = LeerArchivoAFP(rutaArchivoAFP)
+        if leerAchivoAFPOk == True:
+            matches = reconocer(rec.db, fs, rec.DEFAULT_WINDOW_SIZE, rec.DEFAULT_OVERLAP_RATIO, rec.DEFAULT_HIT_MIN, rec.FACTOR_OFFSET, metadatoHora , hashes)
+            t = time.time() - t
+            print("time to reconize : %s", t)
+            if matches is not None:
+                resultadoJson = json.dumps(matches)
+                rec.db.marcar_hora_procesado(horaId, resultadoJson)
+                GrabarXML(rec.DIR_BASECONOCIMIENTO,nombre,matches)
     return matches
+
+
+#def reconocerDirectorio(self, ruta):
+#    rutaAvisos = []
+#    for rutaArchivo, ext in LeerDirectorio(ruta):
+##        rutaAvisos.append(rutaArchivo)
+#    nprocesses = None
+#    try:
+#        nprocesses = nprocesses or multiprocessing.cpu_count()
+#    except NotImplementedError:
+#        nprocesses = 1
+#    else:
+#        nprocesses = 1
+#    if nprocesses > self.MAX_PROC:
+#        nprocesses = self.MAX_PROC
+#    # print reconocerArchivo(self, rutaAvisos[0])
+#    pool = multiprocessing.Pool(nprocesses)
+#
+#    iterator = pool.imap_unordered(reconocerArchivo,
+#                                   rutaAvisos)
+#    while True:
+#        try:
+#            iterator.next()
+#        except multiprocessing.TimeoutError:
+#            continue
+#        except StopIteration:
+#            break
+#        except:
+#            print("Failed fingerprinting")
+#        else:
+#            pass
+#            # print("Completo.")
+#    pool.close()
+#    pool.join()
 
 
 #def reconocerArchivo(rutaArchivo):

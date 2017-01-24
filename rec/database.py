@@ -47,12 +47,13 @@ class Database(object):
     DELETE_HUELLAS_NOPROCESADAS = "DELETE FROM avisos WHERE procesado = 0;"
     UPDATE_AVISO_PROCESADO = "UPDATE avisos SET procesado = 1 WHERE avisoId = %s;"
     UPDATE_HORA_PROCESADO = "UPDATE horas SET procesado = 1, resultado = %s, fechaprocesado = CURRENT_TIMESTAMP WHERE horaId = %s ;"
+    UPDATE_HORA_REPROCESAR = "UPDATE horas SET procesado = 0, fechaprocesado = CURRENT_TIMESTAMP WHERE INSTR(nombre, %s) > 0 ;"
     UPDATE_METADATA_HORA = "UPDATE horas SET fs = %s WHERE horaId = %s ;"
 
     SELECT_AVISOS = "SELECT avisoId, nombre, HEX(sha1) as sha1 FROM avisos WHERE procesado = 1;"
     SELECT_MULTIPLE = "SELECT HEX(hash), avisoId, offset FROM huellas WHERE hash IN (%s);"
     SELECT_AVISO = "SELECT nombre, HEX(sha1) as sha1, duracion FROM avisos WHERE avisoId = %s;"
-    SELECT_HORA_NOMBRE = "SELECT horaId FROM horas WHERE nombre = %s;"
+    SELECT_HORA_NOMBRE = "SELECT horaId, nombre FROM horas WHERE nombre = %s;"
     SELECT_HORA_HORAID = "SELECT horaId, nombre, procesado, resultado, fechacreacion, fechaprocesado FROM horas WHERE horaId = %s;"
     SELECT_HORAS_LIKENOMBRE ="SELECT horaId, nombre, procesado, resultado, fechacreacion, fechaprocesado FROM horas " \
                   "where INSTR(nombre, %s) > 0 and fechacreacion >= %s and fechacreacion <= %s and (procesado = %s or -1 = %s)"
@@ -100,6 +101,16 @@ class Database(object):
     def marcar_hora_procesado(self, horaId, resultado):
         with self.cursor() as cur:
             cur.execute(self.UPDATE_HORA_PROCESADO, (resultado, horaId,))
+
+    def reprocesar_hora(self, nombre):
+        lista = []
+        with self.cursor(cursor_type=DictCursor) as cur:
+            cur.execute(self.SELECT_HORA_NOMBRE, (nombre,))
+            lista = [row for row in cur]
+
+        with self.cursor() as cur:
+            cur.execute(self.UPDATE_HORA_REPROCESAR, (nombre,))
+        return lista
 
     def update_metadata_hora(self, horaId, fs):
         with self.cursor() as cur:

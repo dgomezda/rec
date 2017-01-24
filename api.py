@@ -1,6 +1,6 @@
 from flask import Flask,  request, json, jsonify, make_response
 from flask_restful import Api
-from rec import Rec, reconocerArchivo
+from rec import Rec
 from rec.util import ObtenerConfiguracion
 import os
 import datetime
@@ -81,20 +81,6 @@ def api_horas_cargar():
         horaId = rec.db.insert_hora(request.files['file'].filename)
     return getResponse(errorCode, horaId)
 
-@app.route('/horas/procesar', methods = ['POST'])
-def api_horas_procesar():
-    parametros = json.loads(request.data)
-    try:
-        horaId = parametros.get('horaId')
-        hora = rec.db.obtenerHora_horaId(horaId)
-        rutaArchivo = os.path.join(DIR_HORA, hora['nombre'])
-        resultado = reconocerArchivo(rutaArchivo)
-        response = json.dumps(resultado)
-        rec.db.marcar_hora_procesado(horaId, response)
-    except (RuntimeError):
-        return getResponse(1001, None)
-    return getResponse(0, response)
-
 @app.route('/horas/consultar', methods = ['GET'])
 def api_horas_consultar():
     parametros = request.args
@@ -112,14 +98,15 @@ def api_horas_consultar():
         return jsonify(GetError(1001))
     return getResponse(0,result)
 
-@app.route('/horas/obtenerxml', methods = ['GET'])
-def api_horas_obtenerxml():
-    parametros = request.args
+@app.route('/horas/reprocesarxml', methods = ['POST'])
+def api_horas_reprocesarxml():
+    parametros = json.loads(request.data)
     try:
-        horaid = parametros.get('horaid')
+        nombre = parametros.get('nombre')
+        result = rec.db.reprocesar_hora(nombre)
     except (RuntimeError):
         return jsonify(GetError(1001))
-    return jsonify(parametros)
+    return getResponse(0,result)
 #Fin implementacion del recurso horas
 
 #Implementacion del recurso avisos
@@ -143,39 +130,6 @@ def api_avisos_consultar():
     return getResponse(0,result)
 #Fin de implementacion del recurso avisos.
 
-#Implementacion del recurso parametros
-@app.route('/parametros', methods = ['GET'])
-def api_parametros():
-    return 'Recurso parametros'
-
-@app.route('/parametros/consultarnombrehora', methods = ['GET'])
-def api_avisos_consultarnombrehora():
-    parametros = request.args
-    try:
-        pass
-    except (RuntimeError):
-        return jsonify(GetError(1001))
-    return jsonify(parametros)
-
-@app.route('/parametros/grabarnombrehora', methods = ['POST'])
-def api_avisos_grabarnombrehora():
-    parametros = json.loads(request.data)
-    try:
-        CiuCod = parametros.get('CiuCod')
-        MedCod = parametros.get('MedCod')
-        TipMedCod = parametros.get('TipMedCod')
-        MotCod = parametros.get('MotCod')
-    except (RuntimeError):
-        return jsonify(GetError(1001))
-    return jsonify(parametros)
-
-@app.route('/parametros/creartablas', methods = ['POST'])
-def api_parametros_creartablas():
-    try:
-        rec.ResetBD()
-    except (RuntimeError):
-        return getResponse(10001)
-    return getResponse(0)
 
 @app.route('/apagar', methods=['GET'])
 def shutdown():

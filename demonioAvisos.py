@@ -4,7 +4,8 @@ from multiprocessing import freeze_support
 from rec.util import ObtenerConfiguracion
 
 rec = Rec()
-rec.ResetBD()
+if rec.RESET_BD == 1:
+    rec.ResetBD()
 if __name__ == '__main__':
     cnf = ObtenerConfiguracion()
     DEMONIO_TIEMPO_AVISOS = cnf["DEMONIO_TIEMPO_AVISOS"]
