@@ -9,6 +9,6 @@ if __name__ == '__main__':
     DEMONIO_TIEMPO_XMLS = cnf["DEMONIO_TIEMPO_XMLS"]
     freeze_support()
     while True:
-        time.sleep(DEMONIO_TIEMPO_XMLS)
         print("Buscando huellas pendientes ...")
         rec.reconocerPendientes()
+        time.sleep(DEMONIO_TIEMPO_XMLS)

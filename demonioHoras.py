@@ -9,6 +9,6 @@ if __name__ == '__main__':
     DEMONIO_TIEMPO_HORAS = cnf["DEMONIO_TIEMPO_HORAS"]
     freeze_support()
     while True:
-        time.sleep(DEMONIO_TIEMPO_HORAS)
         print("Buscando horas ...")
         rec.obtenerHuellasDirectorio(rec.DIR_HORA)
+        time.sleep(DEMONIO_TIEMPO_HORAS)

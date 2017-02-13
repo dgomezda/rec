@@ -11,6 +11,6 @@ if __name__ == '__main__':
     DEMONIO_TIEMPO_AVISOS = cnf["DEMONIO_TIEMPO_AVISOS"]
     freeze_support()
     while True:
-        time.sleep(DEMONIO_TIEMPO_AVISOS)
         print("Buscando avisos ...")
         rec.ProcesarDirectorio()
+        time.sleep(DEMONIO_TIEMPO_AVISOS)
