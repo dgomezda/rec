@@ -1,5 +1,5 @@
 import os
-from rec.util import GrabarXML, LeerDirectorio, ExtraerNombreArchivo, ObtenerHashArchivo, GrabarXML, ObtenerConfiguracion, EliminarArchivo, MoverArchivo, GrabarArchivoHuella, LeerArchivoAFP, ObtenerMetaDatosdeArchivoHora
+from rec.util import GrabarXML, LeerDirectorio, ExtraerNombreArchivo, ObtenerHashArchivo, GrabarXML, ObtenerConfiguracion, EliminarArchivo, MoverArchivo, GrabarArchivoHuella, LeerArchivoAFP, ObtenerMetaDatosdeArchivoHora, LeerTodoDirectorio
 from rec.huellas import obtenerHuellas
 from rec.reconocimiento import reconocer
 import warnings
@@ -51,6 +51,23 @@ class Rec(object):
 
     def ResetBD(self):
         self.db.limpiar()
+
+    def ResetDirectorios(self):
+        avisos = LeerTodoDirectorio(self.DIR_AVISO)
+        for aviso in avisos:
+            EliminarArchivo(aviso[0])
+
+        horas = LeerTodoDirectorio(self.DIR_HORA)
+        for hora in horas:
+            EliminarArchivo(hora[0])
+
+        baseConocimientos = LeerTodoDirectorio(self.DIR_BASECONOCIMIENTO)
+        for baseConocimiento in baseConocimientos:
+            EliminarArchivo(baseConocimiento[0])
+
+        huellas = LeerTodoDirectorio(self.DIR_HORA_HUELLA)
+        for huella in huellas:
+            EliminarArchivo(huella[0])
 
     def ProcesarDirectorio(self):
         avisos = LeerDirectorio(self.DIR_AVISO)
@@ -120,7 +137,7 @@ class Rec(object):
         if nprocesses > self.MAX_PROC:
             nprocesses = self.MAX_PROC
 
-        #print grabarArchivoHuellas(rutaAvisos[0])
+        # print grabarArchivoHuellas(rutaAvisos[0])
         pool = multiprocessing.Pool(nprocesses)
         iterator = pool.imap_unordered(grabarArchivoHuellas,
                                        rutaAvisos)
@@ -151,7 +168,7 @@ class Rec(object):
         if nprocesses > self.MAX_PROC:
             nprocesses = self.MAX_PROC
 
-        #print reconocerHuellaPendiente(horasPendientes[0])
+        # print reconocerHuellaPendiente(horasPendientes[0])
         pool = multiprocessing.Pool(nprocesses)
         iterator = pool.imap_unordered(reconocerHuellaPendiente,
                                        horasPendientes)
@@ -199,7 +216,7 @@ def reconocerHuellaPendiente(hora):
     nombre = hora['nombre']
     fs = hora['fs']
     t = time.time()
-    rutaArchivoAFP =  rec.DIR_HORA_HUELLA + "/" + nombre + ".afp"
+    rutaArchivoAFP =  rec.DIR_HORA_HUELLA + nombre + ".afp"
     print "reconociendo hora = : %s ..." % (nombre)
     obtenerMetaDatosOk, metadatoHora = ObtenerMetaDatosdeArchivoHora(nombre)
     if obtenerMetaDatosOk == True:

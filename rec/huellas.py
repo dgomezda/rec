@@ -67,7 +67,7 @@ def get_2D_peaks(arr2D, amp_min):
                                        border_value=1)
 
     # Boolean mask of arr2D with True at peaks
-    detected_peaks = local_max - eroded_background
+    detected_peaks = local_max ^  eroded_background
 
     # extract peaks
     amps = arr2D[detected_peaks]

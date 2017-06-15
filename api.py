@@ -1,13 +1,14 @@
 from flask import Flask,  request, json, jsonify, make_response
 from flask_restful import Api
 from rec import Rec
-from rec.util import ObtenerConfiguracion
+from rec.util import ObtenerConfiguracion, ListarResumenes,ExtraerNombreArchivo
 import os
 import datetime
 
 rec = Rec()
 DIR_AVISO = ''
 DIR_HORA = ''
+DIR_BASECONOCIMIENTO = ''
 ALLOWED_EXTENSIONS = set(['mp3'])
 
 app = Flask(__name__)
@@ -78,7 +79,8 @@ def api_horas():
 def api_horas_cargar():
     errorCode = upload_file(request, DIR_HORA)
     if (errorCode == 0):
-        horaId = rec.db.insert_hora(request.files['file'].filename)
+        nombreHora = ExtraerNombreArchivo(request.files['file'].filename)
+        horaId = rec.db.insert_hora(nombreHora)
     return getResponse(errorCode, horaId)
 
 @app.route('/horas/consultar', methods = ['GET'])
@@ -94,6 +96,15 @@ def api_horas_consultar():
         if(ValidarFechas(fechai, fechaf) == False):
             return getResponse(10005, None)
         result = rec.db.obtenerHoras(nombre, fechai, fechaf, procesado)
+    except (RuntimeError):
+        return jsonify(GetError(1001))
+    return getResponse(0,result)
+
+@app.route('/horas/consultarProcesados', methods = ['GET'])
+def api_horas_consultarProcesados():
+    parametros = request.args
+    try:
+        result = ListarResumenes(DIR_BASECONOCIMIENTO)
     except (RuntimeError):
         return jsonify(GetError(1001))
     return getResponse(0,result)
@@ -141,6 +152,12 @@ def shutdown_server():
     if func is None:
         raise RuntimeError('Not running with the Werkzeug Server')
     func()
+
+@app.route('/limpiar', methods=['GET'])
+def cleanDataFiles():
+    rec.ResetBD()
+    rec.ResetDirectorios()
+    return 'Success'
 #Fin implementacion del recurso parametros
 
 if __name__ == '__main__':
@@ -149,4 +166,5 @@ if __name__ == '__main__':
     API_PORT = cnf["API_PORT"]
     DIR_AVISO = cnf["DIR_AVISO"]
     DIR_HORA = cnf["DIR_HORA"]
+    DIR_BASECONOCIMIENTO = cnf["DIR_BASECONOCIMIENTO"]
     app.run(host=API_HOST, port=API_PORT)

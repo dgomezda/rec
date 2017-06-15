@@ -52,6 +52,14 @@ def LeerDirectorio(ruta=None):
             avisos.append((p, extension))
     return avisos
 
+def LeerTodoDirectorio(ruta=None):
+    avisos = []
+    extension = "*"
+    for rutadir, nombredir, archivos in os.walk(ruta):
+        for f in fnmatch.filter(archivos, "*.%s" % extension):
+            p = os.path.join(rutadir, f)
+            avisos.append((p, extension))
+    return avisos
 
 def ExtraerNombreArchivo(rutaArchivo):
     return os.path.splitext(os.path.basename(rutaArchivo))[0]
@@ -90,6 +98,16 @@ def ObtenerConfiguracion():
         print("Ocurrio un error leyendo el archivo de configuracion: %s. La ejecucion del programa ha concluido." % (str(err)))
         sys.exit(1)
     return config
+def ListarResumenes(ruta):
+    resumenes = []
+    extension = "xml"
+    for rutadir, nombredir, archivos in os.walk(ruta):
+        for f in fnmatch.filter(archivos, "*.%s" % extension):
+            p = os.path.join(rutadir, f)
+            with open(p, 'r') as content_file:
+                content = content_file.read()
+            resumenes.append((f,content))
+    return resumenes
 
 def ObtenerMetaDatosdeArchivoHora(nombre):
     dict = {}
